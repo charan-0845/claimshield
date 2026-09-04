@@ -52,7 +52,7 @@ def score_case(query: CaseFingerprint, candidate: CaseFingerprint) -> SimilarCas
     reasons: list[str] = []
 
     # Legal issue similarity
-    if query.rejection_reason == candidate.rejection_reason:
+    if query.rejection_reason is not None and query.rejection_reason == candidate.rejection_reason:
         scores["legal_issue"] = 1.0
         reasons.append(f"Same denial category ({candidate.rejection_reason.value})")
     else:
@@ -100,11 +100,22 @@ def score_case(query: CaseFingerprint, candidate: CaseFingerprint) -> SimilarCas
 
     overall = sum(scores[k] * WEIGHTS[k] for k in WEIGHTS)
 
+    # Per spec: match_explanation booleans are required on every result.
+    # "Never return only a percentage" — these booleans are what the frontend
+    # renders in the "Why is this similar?" section.
+    match_explanation = {
+        "same_insurer": scores["insurer"] >= 1.0,
+        "same_reason": scores["legal_issue"] == 1.0,
+        "similar_clause": scores["policy_clause"] >= 0.5 or scores["legal_issue"] == 1.0,
+        "similar_facts": scores["factual"] >= 0.4 and scores["claim_medical"] >= 0.5,
+    }
+
     return SimilarCaseMatch(
         case=candidate,
         overall_score=round(overall, 4),
         score_breakdown={k: round(v, 2) for k, v in scores.items()},
         match_reasons=reasons or ["Some factual overlap, but limited direct match"],
+        match_explanation=match_explanation,
     )
 
 

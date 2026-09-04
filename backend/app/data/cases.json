@@ -10,6 +10,7 @@
     "policy_start_date": "2020-01-15",
     "hospitalization_date": "2023-06-10",
     "claim_date": "2023-06-25",
+    "claim_status": "rejected",
     "relevant_policy_clause": "PED exclusion clause, waiting period 4 years",
     "disclosure_issue": true,
     "documentation_issue": false,
@@ -29,7 +30,12 @@
       "Treating doctor's certificate on date of first diagnosis"
     ],
     "source_citation": "State Consumer Disputes Redressal Commission, Maharashtra, Consumer Case (illustrative, verify before public use)",
-    "source_url": null
+    "regulation_sources": [
+      "IRDAI Circular IRDA/HLT/REG/CIR/059/03/2017 — burden of proof for non-disclosure lies with insurer",
+      "Insurance Ombudsman Rules 2017, Rule 14(3)"
+    ],
+    "source_url": null,
+    "insufficient_information": false
   },
   {
     "id": "case_002",
@@ -42,6 +48,7 @@
     "policy_start_date": "2021-03-01",
     "hospitalization_date": "2023-02-14",
     "claim_date": "2023-03-01",
+    "claim_status": "rejected",
     "relevant_policy_clause": "PED exclusion clause, waiting period 4 years",
     "disclosure_issue": true,
     "documentation_issue": false,
@@ -59,7 +66,12 @@
       "Discharge summary from treating hospital"
     ],
     "source_citation": "District Consumer Disputes Redressal Commission, Karnataka (illustrative, verify before public use)",
-    "source_url": null
+    "regulation_sources": [
+      "IRDAI Protection of Policyholders' Interests Regulations 2017, Regulation 8",
+      "Insurance Ombudsman Rules 2017, Rule 14(3)"
+    ],
+    "source_url": null,
+    "insufficient_information": false
   },
   {
     "id": "case_003",
@@ -72,6 +84,7 @@
     "policy_start_date": "2019-08-20",
     "hospitalization_date": "2023-09-05",
     "claim_date": "2023-09-20",
+    "claim_status": "rejected",
     "relevant_policy_clause": "PED exclusion clause, waiting period 3 years",
     "disclosure_issue": true,
     "documentation_issue": true,
@@ -88,7 +101,11 @@
       "Pre-policy prescription dated 8 months before policy inception, explicitly for diabetes management"
     ],
     "source_citation": "National Consumer Disputes Redressal Commission (illustrative, verify before public use)",
-    "source_url": null
+    "regulation_sources": [
+      "IRDAI Circular IRDA/HLT/REG/CIR/059/03/2017"
+    ],
+    "source_url": null,
+    "insufficient_information": false
   },
   {
     "id": "case_004",
@@ -101,6 +118,7 @@
     "policy_start_date": "2022-11-01",
     "hospitalization_date": "2023-08-01",
     "claim_date": "2023-08-15",
+    "claim_status": "partial",
     "relevant_policy_clause": "2-year waiting period for joint replacement surgery",
     "disclosure_issue": false,
     "documentation_issue": false,
@@ -119,6 +137,126 @@
       "Policy document with waiting period schedule"
     ],
     "source_citation": "District Consumer Disputes Redressal Commission, Tamil Nadu (illustrative, verify before public use)",
-    "source_url": null
+    "regulation_sources": [
+      "IRDAI Health Insurance Regulations 2016, Regulation 11 — Waiting period provisions"
+    ],
+    "source_url": null,
+    "insufficient_information": false
+  },
+  {
+    "id": "case_005",
+    "insurer": "National Insurance Co.",
+    "insurance_type": "health",
+    "claim_amount": 175000,
+    "rejection_reason": "documentation",
+    "condition": "appendectomy",
+    "treatment_type": "surgery",
+    "policy_start_date": "2021-06-01",
+    "hospitalization_date": "2023-11-10",
+    "claim_date": "2023-12-01",
+    "claim_status": "rejected",
+    "relevant_policy_clause": "Clause 7 — Claim intimation and document submission requirements",
+    "disclosure_issue": false,
+    "documentation_issue": true,
+    "court_level": "ombudsman",
+    "jurisdiction": "West Bengal",
+    "outcome": "policyholder_favorable",
+    "decision_summary": "Ombudsman found insurer had raised document deficiencies in piecemeal fashion over multiple communications rather than issuing a single consolidated deficiency notice as required by IRDAI regulations. Claim upheld in full.",
+    "successful_arguments": [
+      "Insurer violated the single consolidated deficiency notice requirement under IRDAI Circular IRDA/HLT/MISC/CIR/216/09/2020",
+      "Policyholder submitted all documents requested in the first deficiency letter within the stipulated time",
+      "Subsequent additional document requests were made after the permitted response window, precluding rejection on documentation grounds"
+    ],
+    "failed_arguments": [],
+    "key_evidence": [
+      "Timeline of insurer's document request communications showing piecemeal requests",
+      "Courier receipts and acknowledgments proving timely submission of each batch",
+      "Hospital-certified duplicate bills and discharge summary"
+    ],
+    "source_citation": "Office of the Insurance Ombudsman, Kolkata (illustrative, verify before public use)",
+    "regulation_sources": [
+      "IRDAI Circular IRDA/HLT/MISC/CIR/216/09/2020 — Health insurance claim processing timelines",
+      "IRDAI Protection of Policyholders' Interests Regulations 2017, Regulation 9"
+    ],
+    "source_url": null,
+    "insufficient_information": false
+  },
+  {
+    "id": "case_006",
+    "insurer": "Reliance General Insurance",
+    "insurance_type": "health",
+    "claim_amount": 520000,
+    "rejection_reason": "policy_exclusion",
+    "condition": "bariatric surgery",
+    "treatment_type": "surgery",
+    "policy_start_date": "2020-09-01",
+    "hospitalization_date": "2024-03-20",
+    "claim_date": "2024-04-05",
+    "claim_status": "partial",
+    "relevant_policy_clause": "Exclusion — obesity treatment and weight management procedures",
+    "disclosure_issue": false,
+    "documentation_issue": false,
+    "court_level": "ombudsman",
+    "jurisdiction": "Maharashtra",
+    "outcome": "partial_relief",
+    "decision_summary": "Ombudsman directed partial settlement covering the medically necessary component of the bariatric surgery (60%) due to life-threatening comorbidities (hypertension, sleep apnea), while the elective weight-loss component remained excluded under the policy.",
+    "successful_arguments": [
+      "Surgery was medically necessary to treat covered comorbidities — not purely elective",
+      "Treating physician's letter explicitly stated life-threatening comorbidity risk",
+      "Policy exclusion clause did not explicitly exclude medically necessary bariatric surgery for covered conditions",
+      "IRDAI circular on medically necessary treatment overrides blanket exclusion"
+    ],
+    "failed_arguments": [
+      "Claim for full amount rejected — elective weight-loss component remained excluded"
+    ],
+    "key_evidence": [
+      "Treating physician's medical necessity certificate citing hypertension and sleep apnea",
+      "Cardiologist's supporting letter",
+      "Pre-surgery test reports showing critical comorbidity levels",
+      "IRDAI Circular IRDAI/HLT/MISC/CIR/245/11/2019"
+    ],
+    "source_citation": "Office of the Insurance Ombudsman, Mumbai (illustrative, verify before public use)",
+    "regulation_sources": [
+      "IRDAI Circular IRDAI/HLT/MISC/CIR/245/11/2019 — Medically necessary treatment coverage",
+      "Insurance Ombudsman Rules 2017, Rule 16 — Partial relief orders"
+    ],
+    "source_url": null,
+    "insufficient_information": false
+  },
+  {
+    "id": "case_007",
+    "insurer": "Future Generali India Insurance",
+    "insurance_type": "health",
+    "claim_amount": 198000,
+    "rejection_reason": "partial_settlement",
+    "condition": "cardiac stenting",
+    "treatment_type": "surgery",
+    "policy_start_date": "2019-04-01",
+    "hospitalization_date": "2024-05-12",
+    "claim_date": "2024-06-01",
+    "claim_status": "partial",
+    "relevant_policy_clause": "Sub-limit for cardiac procedures — Clause 8.3",
+    "disclosure_issue": false,
+    "documentation_issue": false,
+    "court_level": "unknown",
+    "jurisdiction": null,
+    "outcome": "partial_relief",
+    "decision_summary": "INSUFFICIENT INFORMATION — Case records are incomplete. A partial settlement of 55% was recorded but the specific sub-limit schedule applied, the arbitration proceedings, and the exact breakdown of accepted vs. rejected amounts are not documented in available records. Cannot draw reliable conclusions.",
+    "successful_arguments": [
+      "NOTE: Arguments in this case are incompletely documented. The following are partial records only.",
+      "Policyholder disputed the sub-limit applied to cardiac procedures"
+    ],
+    "failed_arguments": [],
+    "key_evidence": [
+      "NOTE: Evidence records for this case are incomplete.",
+      "Partial policy schedule document (sub-limit schedule page missing from corpus)",
+      "Insurer's partial settlement letter (amounts redacted in available copy)"
+    ],
+    "source_citation": "Incomplete records — do not cite as precedent without verification",
+    "regulation_sources": [
+      "case_007 — Future Generali Partial Settlement Dispute 2024 (incomplete records)"
+    ],
+    "source_url": null,
+    "insufficient_information": true
   }
 ]
