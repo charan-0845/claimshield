@@ -10,6 +10,7 @@
     "policy_start_date": "2020-01-15",
     "hospitalization_date": "2023-06-10",
     "claim_date": "2023-06-25",
+    "claim_status": "rejected",
     "relevant_policy_clause": "PED exclusion clause, waiting period 4 years",
     "disclosure_issue": true,
     "documentation_issue": false,
@@ -28,8 +29,13 @@
       "Proposal form copy showing accurate disclosure of known conditions",
       "Treating doctor's certificate on date of first diagnosis"
     ],
-    "source_citation": "State Consumer Disputes Redressal Commission, Maharashtra, Consumer Case (illustrative, verify before public use)",
-    "source_url": null
+    "source_citation": "State Consumer Disputes Redressal Commission, Maharashtra — illustrative case, synthetic for MVP demo",
+    "regulation_sources": [
+      "IRDAI Circular IRDA/HLT/REG/CIR/059/03/2017 — burden of proof for non-disclosure lies with insurer",
+      "Insurance Ombudsman Rules 2017, Rule 14(3)"
+    ],
+    "source_url": null,
+    "insufficient_information": false
   },
   {
     "id": "case_002",
@@ -42,6 +48,7 @@
     "policy_start_date": "2021-03-01",
     "hospitalization_date": "2023-02-14",
     "claim_date": "2023-03-01",
+    "claim_status": "rejected",
     "relevant_policy_clause": "PED exclusion clause, waiting period 4 years",
     "disclosure_issue": true,
     "documentation_issue": false,
@@ -59,7 +66,12 @@
       "Discharge summary from treating hospital"
     ],
     "source_citation": "District Consumer Disputes Redressal Commission, Karnataka (illustrative, verify before public use)",
-    "source_url": null
+    "regulation_sources": [
+      "IRDAI Protection of Policyholders' Interests Regulations 2017, Regulation 8",
+      "Insurance Ombudsman Rules 2017, Rule 14(3)"
+    ],
+    "source_url": null,
+    "insufficient_information": false
   },
   {
     "id": "case_003",
@@ -72,6 +84,7 @@
     "policy_start_date": "2019-08-20",
     "hospitalization_date": "2023-09-05",
     "claim_date": "2023-09-20",
+    "claim_status": "rejected",
     "relevant_policy_clause": "PED exclusion clause, waiting period 3 years",
     "disclosure_issue": true,
     "documentation_issue": true,
@@ -88,7 +101,11 @@
       "Pre-policy prescription dated 8 months before policy inception, explicitly for diabetes management"
     ],
     "source_citation": "National Consumer Disputes Redressal Commission (illustrative, verify before public use)",
-    "source_url": null
+    "regulation_sources": [
+      "IRDAI Circular IRDA/HLT/REG/CIR/059/03/2017"
+    ],
+    "source_url": null,
+    "insufficient_information": false
   },
   {
     "id": "case_004",
@@ -101,6 +118,7 @@
     "policy_start_date": "2022-11-01",
     "hospitalization_date": "2023-08-01",
     "claim_date": "2023-08-15",
+    "claim_status": "partial",
     "relevant_policy_clause": "2-year waiting period for joint replacement surgery",
     "disclosure_issue": false,
     "documentation_issue": false,
@@ -119,570 +137,126 @@
       "Policy document with waiting period schedule"
     ],
     "source_citation": "District Consumer Disputes Redressal Commission, Tamil Nadu (illustrative, verify before public use)",
-    "source_url": null
+    "regulation_sources": [
+      "IRDAI Health Insurance Regulations 2016, Regulation 11 — Waiting period provisions"
+    ],
+    "source_url": null,
+    "insufficient_information": false
   },
   {
     "id": "case_005",
-    "insurer": "Star Health Insurance",
+    "insurer": "National Insurance Co.",
     "insurance_type": "health",
-    "claim_amount": 520000,
-    "rejection_reason": "ped_non_disclosure",
-    "condition": "hypertension",
-    "treatment_type": "hospitalization",
-    "policy_start_date": "2018-05-10",
-    "hospitalization_date": "2022-11-20",
-    "claim_date": "2022-12-05",
-    "relevant_policy_clause": "PED exclusion clause — conditions diagnosed or treated within 48 months of policy commencement",
-    "disclosure_issue": true,
-    "documentation_issue": false,
+    "claim_amount": 175000,
+    "rejection_reason": "documentation",
+    "condition": "appendectomy",
+    "treatment_type": "surgery",
+    "policy_start_date": "2021-06-01",
+    "hospitalization_date": "2023-11-10",
+    "claim_date": "2023-12-01",
+    "claim_status": "rejected",
+    "relevant_policy_clause": "Clause 7 — Claim intimation and document submission requirements",
+    "disclosure_issue": false,
+    "documentation_issue": true,
     "court_level": "ombudsman",
-    "jurisdiction": "Tamil Nadu",
+    "jurisdiction": "West Bengal",
     "outcome": "policyholder_favorable",
-    "decision_summary": "Ombudsman found that the insurer's repudiation was based solely on a casual mention of 'blood pressure monitoring' in a routine check-up note, which did not constitute a diagnosis or treatment of hypertension under IRDAI guidelines.",
+    "decision_summary": "Ombudsman found insurer had raised document deficiencies in piecemeal fashion over multiple communications rather than issuing a single consolidated deficiency notice as required by IRDAI regulations. Claim upheld in full.",
     "successful_arguments": [
-      "A mention of blood pressure monitoring in a general health check-up does not constitute a diagnosis of hypertension",
-      "Policyholder was never prescribed antihypertensive medication before policy inception",
-      "IRDAI circular on PED clarification: insurer must show actual diagnosis and treatment, not mere clinical observation"
+      "Insurer violated the single consolidated deficiency notice requirement under IRDAI Circular IRDA/HLT/MISC/CIR/216/09/2020",
+      "Policyholder submitted all documents requested in the first deficiency letter within the stipulated time",
+      "Subsequent additional document requests were made after the permitted response window, precluding rejection on documentation grounds"
     ],
     "failed_arguments": [],
     "key_evidence": [
-      "Routine health check-up report mentioning BP monitoring — no diagnosis note",
-      "Pharmacy records from pre-policy period showing no antihypertensive drugs purchased",
-      "Treating cardiologist's affidavit that formal hypertension diagnosis was made post policy inception"
+      "Timeline of insurer's document request communications showing piecemeal requests",
+      "Courier receipts and acknowledgments proving timely submission of each batch",
+      "Hospital-certified duplicate bills and discharge summary"
     ],
-    "source_citation": "Insurance Ombudsman, Tamil Nadu (synthetic case based on common Ombudsman ruling patterns)",
-    "source_url": null
+    "source_citation": "Office of the Insurance Ombudsman, Kolkata (illustrative, verify before public use)",
+    "regulation_sources": [
+      "IRDAI Circular IRDA/HLT/MISC/CIR/216/09/2020 — Health insurance claim processing timelines",
+      "IRDAI Protection of Policyholders' Interests Regulations 2017, Regulation 9"
+    ],
+    "source_url": null,
+    "insufficient_information": false
   },
   {
     "id": "case_006",
-    "insurer": "HDFC ERGO Health",
+    "insurer": "Reliance General Insurance",
     "insurance_type": "health",
-    "claim_amount": 175000,
-    "rejection_reason": "ped_non_disclosure",
-    "condition": "thyroid disorder",
-    "treatment_type": "hospitalization",
+    "claim_amount": 520000,
+    "rejection_reason": "policy_exclusion",
+    "condition": "bariatric surgery",
+    "treatment_type": "surgery",
     "policy_start_date": "2020-09-01",
-    "hospitalization_date": "2023-03-18",
-    "claim_date": "2023-04-02",
-    "relevant_policy_clause": "Pre-existing disease exclusion — 4-year waiting period",
-    "disclosure_issue": true,
+    "hospitalization_date": "2024-03-20",
+    "claim_date": "2024-04-05",
+    "claim_status": "partial",
+    "relevant_policy_clause": "Exclusion — obesity treatment and weight management procedures",
+    "disclosure_issue": false,
     "documentation_issue": false,
-    "court_level": "district_commission",
-    "jurisdiction": "Gujarat",
-    "outcome": "policyholder_favorable",
-    "decision_summary": "Commission held that hypothyroidism managed through diet alone (no medication at policy start) did not trigger the PED disclosure obligation as the condition was subclinical and not under active medical treatment.",
+    "court_level": "ombudsman",
+    "jurisdiction": "Maharashtra",
+    "outcome": "partial_relief",
+    "decision_summary": "Ombudsman directed partial settlement covering the medically necessary component of the bariatric surgery (60%) due to life-threatening comorbidities (hypertension, sleep apnea), while the elective weight-loss component remained excluded under the policy.",
     "successful_arguments": [
-      "Subclinical hypothyroidism not requiring medication is not a 'pre-existing disease' within the policy definition",
-      "IRDAI Health Insurance Regulations 2016 define PED as a condition requiring active medical treatment — diet management alone does not qualify",
-      "Policyholder disclosed all conditions for which they received medical treatment"
+      "Surgery was medically necessary to treat covered comorbidities — not purely elective",
+      "Treating physician's letter explicitly stated life-threatening comorbidity risk",
+      "Policy exclusion clause did not explicitly exclude medically necessary bariatric surgery for covered conditions",
+      "IRDAI circular on medically necessary treatment overrides blanket exclusion"
     ],
-    "failed_arguments": [],
+    "failed_arguments": [
+      "Claim for full amount rejected — elective weight-loss component remained excluded"
+    ],
     "key_evidence": [
-      "Thyroid function test report from pre-policy period showing borderline TSH levels",
-      "No prescription or pharmacy records for thyroid medication pre-dating policy",
-      "Treating endocrinologist's note: medication commenced after policy start"
+      "Treating physician's medical necessity certificate citing hypertension and sleep apnea",
+      "Cardiologist's supporting letter",
+      "Pre-surgery test reports showing critical comorbidity levels",
+      "IRDAI Circular IRDAI/HLT/MISC/CIR/245/11/2019"
     ],
-    "source_citation": "District Consumer Disputes Redressal Commission, Gujarat (synthetic — based on documented IRDAI subclinical PED ruling precedents)",
-    "source_url": null
+    "source_citation": "Office of the Insurance Ombudsman, Mumbai (illustrative, verify before public use)",
+    "regulation_sources": [
+      "IRDAI Circular IRDAI/HLT/MISC/CIR/245/11/2019 — Medically necessary treatment coverage",
+      "Insurance Ombudsman Rules 2017, Rule 16 — Partial relief orders"
+    ],
+    "source_url": null,
+    "insufficient_information": false
   },
   {
     "id": "case_007",
-    "insurer": "New India Assurance",
+    "insurer": "Future Generali India Insurance",
     "insurance_type": "health",
-    "claim_amount": 680000,
-    "rejection_reason": "ped_non_disclosure",
-    "condition": "coronary artery disease",
-    "treatment_type": "surgery",
-    "policy_start_date": "2017-03-15",
-    "hospitalization_date": "2021-08-10",
-    "claim_date": "2021-08-30",
-    "relevant_policy_clause": "PED exclusion — conditions existing prior to policy commencement, waiting period 4 years",
-    "disclosure_issue": true,
-    "documentation_issue": false,
-    "court_level": "state_commission",
-    "jurisdiction": "Delhi",
-    "outcome": "insurer_favorable",
-    "decision_summary": "Commission upheld repudiation as the policyholder had undergone an angiography procedure 6 months before taking the policy — clear evidence of a known cardiac condition that was not disclosed in the proposal form.",
-    "successful_arguments": [],
-    "failed_arguments": [
-      "Policyholder argued the angiography was 'preventive' and no formal diagnosis of CAD was made — commission found the clinical documentation showed otherwise",
-      "Claim that insurer waived non-disclosure by accepting premium for 4 years was rejected as the waiting period had not yet elapsed"
-    ],
-    "key_evidence": [
-      "Angiography report dated 6 months before policy inception showing significant coronary stenosis",
-      "Cardiologist's referral letter for the angiography explicitly using 'suspected CAD' in diagnosis"
-    ],
-    "source_citation": "State Consumer Disputes Redressal Commission, Delhi (synthetic — consistent with documented NCDRC CAD non-disclosure patterns)",
-    "source_url": null
-  },
-  {
-    "id": "case_008",
-    "insurer": "Bajaj Allianz Health",
-    "insurance_type": "health",
-    "claim_amount": 290000,
-    "rejection_reason": "ped_non_disclosure",
-    "condition": "asthma",
-    "treatment_type": "hospitalization",
-    "policy_start_date": "2019-06-01",
-    "hospitalization_date": "2022-07-14",
-    "claim_date": "2022-07-30",
-    "relevant_policy_clause": "PED — respiratory conditions, 2-year waiting period",
-    "disclosure_issue": true,
-    "documentation_issue": false,
-    "court_level": "ombudsman",
-    "jurisdiction": "Maharashtra",
-    "outcome": "policyholder_favorable",
-    "decision_summary": "Ombudsman found that childhood asthma that had been in complete remission for over 10 years without any inhaler or medication use did not constitute a pre-existing disease requiring disclosure at the time of proposal.",
-    "successful_arguments": [
-      "Asthma in complete remission for 10+ years without medication does not constitute an active pre-existing condition",
-      "Medical literature accepted by ombudsman: remission lasting more than 5 years with zero symptom recurrence is clinically equivalent to resolved condition",
-      "Policyholder disclosed all conditions for which they were currently receiving treatment"
-    ],
-    "failed_arguments": [],
-    "key_evidence": [
-      "Childhood medical records showing last asthma treatment was 12 years before policy start",
-      "Treating pulmonologist's certificate: no asthma medication or inhaler prescribed in 10 years",
-      "Current hospital discharge citing an entirely separate trigger unrelated to childhood asthma history"
-    ],
-    "source_citation": "Insurance Ombudsman, Maharashtra (synthetic — based on IRDAI remission/dormancy PED guidelines)",
-    "source_url": null
-  },
-  {
-    "id": "case_009",
-    "insurer": "ICICI Lombard",
-    "insurance_type": "health",
-    "claim_amount": 410000,
-    "rejection_reason": "waiting_period",
-    "condition": "cataract",
-    "treatment_type": "surgery",
-    "policy_start_date": "2022-01-10",
-    "hospitalization_date": "2023-07-05",
-    "claim_date": "2023-07-20",
-    "relevant_policy_clause": "2-year waiting period for cataract surgery — Schedule of Benefits, Clause 3.2",
-    "disclosure_issue": false,
-    "documentation_issue": false,
-    "court_level": "district_commission",
-    "jurisdiction": "Karnataka",
-    "outcome": "insurer_favorable",
-    "decision_summary": "Commission upheld waiting period application. Surgery was performed 18 months after policy commencement, which fell squarely within the 2-year waiting period for cataract. Policyholder's argument that the condition was 'urgent' was not substantiated by any medical certificate of urgency.",
-    "successful_arguments": [],
-    "failed_arguments": [
-      "Urgency argument rejected as no ophthalmologist certificate was produced claiming immediate surgical need",
-      "Argument that waiting periods are unfair was rejected — they are IRDAI-approved standard policy terms"
-    ],
-    "key_evidence": [
-      "Policy schedule showing cataract surgery in 2-year waiting period list",
-      "Hospital admission date: 18 months post policy start",
-      "No ophthalmologist urgency certificate on record"
-    ],
-    "source_citation": "District Consumer Disputes Redressal Commission, Karnataka (synthetic — based on documented cataract waiting period rulings)",
-    "source_url": null
-  },
-  {
-    "id": "case_010",
-    "insurer": "Max Bupa Health Insurance",
-    "insurance_type": "health",
-    "claim_amount": 195000,
-    "rejection_reason": "waiting_period",
-    "condition": "hernia",
-    "treatment_type": "surgery",
-    "policy_start_date": "2021-07-15",
-    "hospitalization_date": "2022-09-10",
-    "claim_date": "2022-09-25",
-    "relevant_policy_clause": "2-year waiting period for hernia repair surgery",
-    "disclosure_issue": false,
-    "documentation_issue": false,
-    "court_level": "ombudsman",
-    "jurisdiction": "Delhi",
-    "outcome": "policyholder_favorable",
-    "decision_summary": "Ombudsman ruled that an inguinal hernia that presented acutely (strangulated, emergency surgery required) falls outside the waiting period exclusion because the emergency presentation was a new acute event, not a scheduled elective procedure.",
-    "successful_arguments": [
-      "Strangulated hernia requiring emergency surgery is an acute emergency, not an elective procedure — the waiting period clause applies to elective planned surgeries",
-      "Treating surgeon's certificate confirmed emergency surgical intervention was necessary within hours of admission",
-      "No prior hernia diagnosis or treatment existed — this was the first presentation"
-    ],
-    "failed_arguments": [],
-    "key_evidence": [
-      "Emergency admission note: patient presented with severe abdominal pain, irreducible hernia",
-      "Operating surgeon's certificate: immediate surgical intervention required to prevent intestinal necrosis",
-      "Prior medical records showing no hernia diagnosis or treatment"
-    ],
-    "source_citation": "Insurance Ombudsman, Delhi (synthetic — consistent with documented emergency surgery waiting period exception rulings)",
-    "source_url": null
-  },
-  {
-    "id": "case_011",
-    "insurer": "Religare Health Insurance",
-    "insurance_type": "health",
-    "claim_amount": 340000,
-    "rejection_reason": "waiting_period",
-    "condition": "gallstone",
-    "treatment_type": "surgery",
-    "policy_start_date": "2020-04-01",
-    "hospitalization_date": "2021-05-18",
-    "claim_date": "2021-06-02",
-    "relevant_policy_clause": "2-year waiting period for gallbladder surgery (cholecystectomy)",
-    "disclosure_issue": false,
-    "documentation_issue": false,
-    "court_level": "state_commission",
-    "jurisdiction": "Uttar Pradesh",
-    "outcome": "insurer_favorable",
-    "decision_summary": "Waiting period clause clearly applied — cholecystectomy was an elective planned procedure performed 13 months into the policy. Policyholder knew about gallstones for 6 months before surgery and made no attempt to establish urgency.",
-    "successful_arguments": [],
-    "failed_arguments": [
-      "Policyholder argued pain episodes constituted urgency — commission found symptom management (conservative treatment) was ongoing for 6 months, negating urgency claim",
-      "Argument that waiting period information was not clearly communicated was rejected — policy brochure and schedule clearly listed gallstone surgery in exclusion table"
-    ],
-    "key_evidence": [
-      "Ultrasound report showing gallstones dated 6 months before surgery",
-      "GP's notes showing conservative symptom management over preceding months",
-      "Policy schedule with gallbladder surgery explicitly listed in waiting period table"
-    ],
-    "source_citation": "State Consumer Disputes Redressal Commission, Uttar Pradesh (synthetic)",
-    "source_url": null
-  },
-  {
-    "id": "case_012",
-    "insurer": "Oriental Insurance",
-    "insurance_type": "health",
-    "claim_amount": 265000,
-    "rejection_reason": "waiting_period",
-    "condition": "varicose veins",
-    "treatment_type": "surgery",
-    "policy_start_date": "2019-02-20",
-    "hospitalization_date": "2020-01-15",
-    "claim_date": "2020-02-01",
-    "relevant_policy_clause": "2-year waiting period for varicose vein procedures",
-    "disclosure_issue": false,
-    "documentation_issue": false,
-    "court_level": "district_commission",
-    "jurisdiction": "Kerala",
-    "outcome": "partial_relief",
-    "decision_summary": "Commission found waiting period applied to the surgical laser ablation procedure itself, but directed the insurer to pay for hospitalization costs, nursing, and pharmacy charges during the admission that were not directly attributable to the excluded surgery.",
-    "successful_arguments": [
-      "Hospitalization overhead (room rent, nursing, medication, anaesthesia pre-assessment) is not synonymous with 'the procedure' under the waiting period clause",
-      "Insurer's blanket rejection of the entire claim was an overreach — the clause excludes the specific procedure, not all associated medical costs"
-    ],
-    "failed_arguments": [
-      "Claim that varicose veins constituted a vascular emergency was rejected as elective admission records showed pre-booked admission date 2 weeks prior"
-    ],
-    "key_evidence": [
-      "Itemized hospital bill separating procedure cost from hospitalization overhead",
-      "Elective pre-booked admission record",
-      "Policy clause language specifying 'varicose vein operations/procedures' — not 'all related hospitalization'"
-    ],
-    "source_citation": "District Consumer Disputes Redressal Commission, Kerala (synthetic — based on documented partial-relief pattern for waiting period cases)",
-    "source_url": null
-  },
-  {
-    "id": "case_013",
-    "insurer": "United India Insurance",
-    "insurance_type": "health",
-    "claim_amount": 125000,
-    "rejection_reason": "policy_exclusion",
-    "condition": "dental treatment",
-    "treatment_type": "day care",
-    "policy_start_date": "2021-01-01",
-    "hospitalization_date": "2023-04-10",
-    "claim_date": "2023-04-25",
-    "relevant_policy_clause": "Exclusion clause — dental treatment and surgery, unless arising from accidental bodily injury",
-    "disclosure_issue": false,
-    "documentation_issue": false,
-    "court_level": "district_commission",
-    "jurisdiction": "Andhra Pradesh",
-    "outcome": "insurer_favorable",
-    "decision_summary": "Dental procedure (tooth extraction and crown work) fell squarely within the standard dental exclusion clause. Policyholder's argument that the dental issue was secondary to a jaw injury was not substantiated by accident records.",
-    "successful_arguments": [],
-    "failed_arguments": [
-      "Policyholder argued dental treatment was consequential to facial trauma — no accident FIR or contemporaneous medical record of injury was produced",
-      "Exclusion clause was clearly printed and explained in policy schedule"
-    ],
-    "key_evidence": [
-      "Hospital bill showing elective dental procedure codes",
-      "No FIR, accident report, or contemporaneous injury record",
-      "Policy schedule listing dental exclusion"
-    ],
-    "source_citation": "District Consumer Disputes Redressal Commission, Andhra Pradesh (synthetic)",
-    "source_url": null
-  },
-  {
-    "id": "case_014",
-    "insurer": "Star Health Insurance",
-    "insurance_type": "health",
-    "claim_amount": 88000,
-    "rejection_reason": "documentation",
-    "condition": "appendicitis",
-    "treatment_type": "surgery",
-    "policy_start_date": "2022-06-01",
-    "hospitalization_date": "2023-01-08",
-    "claim_date": "2023-01-22",
-    "relevant_policy_clause": "Claim processing — submission of originals of all hospital bills, discharge summary, and investigation reports within 30 days",
-    "disclosure_issue": false,
-    "documentation_issue": true,
-    "court_level": "ombudsman",
-    "jurisdiction": "Karnataka",
-    "outcome": "policyholder_favorable",
-    "decision_summary": "Ombudsman found that the insurer's rejection of the claim solely on the basis of a delay in submitting original documents (caused by the hospital's administrative backlog) was not sustainable when the policyholder had submitted all documents within 60 days and had written to the insurer explaining the delay.",
-    "successful_arguments": [
-      "Delay in obtaining original documents was attributable to hospital's administrative delay, not claimant's negligence",
-      "Policyholder proactively communicated delay reason to insurer in writing within 30 days",
-      "IRDAI guidelines: claim rejection solely on technical document delay grounds, without prejudice to the insurer, is not sustainable"
-    ],
-    "failed_arguments": [],
-    "key_evidence": [
-      "Hospital letter confirming administrative backlog in issuing original discharge summaries",
-      "Policyholder's email to insurer within 30-day deadline explaining delay with timeline commitment",
-      "Complete original document set submitted on day 58"
-    ],
-    "source_citation": "Insurance Ombudsman, Karnataka (synthetic — based on IRDAI regulation 13 on document submission and documented Ombudsman patterns)",
-    "source_url": null
-  },
-  {
-    "id": "case_015",
-    "insurer": "HDFC ERGO Health",
-    "insurance_type": "health",
-    "claim_amount": 445000,
+    "claim_amount": 198000,
     "rejection_reason": "partial_settlement",
-    "condition": "stroke rehabilitation",
-    "treatment_type": "hospitalization",
-    "policy_start_date": "2018-11-01",
-    "hospitalization_date": "2023-02-20",
-    "claim_date": "2023-03-15",
-    "relevant_policy_clause": "Room rent sub-limit: 1% of sum insured per day; ICU sub-limit: 2% of sum insured per day",
-    "disclosure_issue": false,
-    "documentation_issue": false,
-    "court_level": "state_commission",
-    "jurisdiction": "Maharashtra",
-    "outcome": "partial_relief",
-    "decision_summary": "Insurer applied proportionate deduction across all claim components due to room rent sub-limit breach. Commission held the proportionate deduction on post-ICU room components was correctly applied, but directed the insurer to pay full ICU costs as the ICU sub-limit was not breached.",
-    "successful_arguments": [
-      "ICU charges should be assessed independently against the ICU sub-limit, not bundled with general room rent proportionate deduction",
-      "Proportionate deduction mechanism, while valid, must be applied component by component per IRDAI guidelines, not as a blanket deduction"
-    ],
-    "failed_arguments": [
-      "Argument that room rent sub-limits are unconscionable was rejected — IRDAI permits them and they were clearly disclosed"
-    ],
-    "key_evidence": [
-      "Itemized hospital bill showing ICU vs general ward costs separately",
-      "Policy schedule showing ICU sub-limit at 2% vs room rent sub-limit at 1%",
-      "Calculation sheet prepared by policyholder's counsel showing correct proportionate deduction methodology"
-    ],
-    "source_citation": "State Consumer Disputes Redressal Commission, Maharashtra (synthetic — based on documented sub-limit proportionate deduction rulings)",
-    "source_url": null
-  },
-  {
-    "id": "case_016",
-    "insurer": "Bajaj Allianz Health",
-    "insurance_type": "health",
-    "claim_amount": 560000,
-    "rejection_reason": "ped_non_disclosure",
-    "condition": "kidney disease",
-    "treatment_type": "hospitalization",
-    "policy_start_date": "2016-04-01",
-    "hospitalization_date": "2020-10-05",
-    "claim_date": "2020-10-20",
-    "relevant_policy_clause": "PED exclusion — 4-year waiting period",
-    "disclosure_issue": true,
-    "documentation_issue": false,
-    "court_level": "national_commission",
-    "jurisdiction": "Delhi",
-    "outcome": "policyholder_favorable",
-    "decision_summary": "The insurer repudiated on the basis that a creatinine blood test result slightly above normal range 2 years before policy commencement indicated pre-existing kidney disease. National Commission held that a single borderline lab value — without a physician's diagnosis note, without treatment, and without a follow-up that confirmed kidney disease — was an insufficient basis to establish a PED under any reasonable clinical or legal standard.",
-    "successful_arguments": [
-      "A borderline lab value without clinical follow-up or formal diagnosis does not constitute a pre-existing disease",
-      "Policyholder had no knowledge of any kidney condition — no physician ever communicated a diagnosis",
-      "Insurer's medical evaluator's opinion was based on retrospective interpretation of a single data point, which the commission found speculative"
-    ],
-    "failed_arguments": [],
-    "key_evidence": [
-      "Single creatinine test report from 2 years before policy with no follow-up test or physician diagnosis note",
-      "Complete absence of any prescription, hospital visit, or treatment record for kidney disease pre-policy",
-      "Nephrologist's affidavit that the borderline value was within normal population variation and did not require clinical follow-up at that level"
-    ],
-    "source_citation": "National Consumer Disputes Redressal Commission (synthetic — consistent with documented single lab value repudiation reversal patterns)",
-    "source_url": null
-  },
-  {
-    "id": "case_017",
-    "insurer": "ICICI Lombard",
-    "insurance_type": "health",
-    "claim_amount": 320000,
-    "rejection_reason": "waiting_period",
-    "condition": "piles (haemorrhoids)",
+    "condition": "cardiac stenting",
     "treatment_type": "surgery",
-    "policy_start_date": "2021-09-01",
-    "hospitalization_date": "2023-03-12",
-    "claim_date": "2023-03-28",
-    "relevant_policy_clause": "2-year waiting period for piles/fistula/fissure surgical treatment",
+    "policy_start_date": "2019-04-01",
+    "hospitalization_date": "2024-05-12",
+    "claim_date": "2024-06-01",
+    "claim_status": "partial",
+    "relevant_policy_clause": "Sub-limit for cardiac procedures — Clause 8.3",
     "disclosure_issue": false,
-    "documentation_issue": false,
-    "court_level": "district_commission",
-    "jurisdiction": "Rajasthan",
-    "outcome": "policyholder_favorable",
-    "decision_summary": "Commission found that the surgery was performed 18.5 months after policy start, which was within the waiting period. However, the insurer's failure to include piles surgery in the clearly communicated waiting period schedule (it was in internal underwriting notes but not the policyholder-facing policy document) meant the policyholder had no reasonable notice of this exclusion. Insurer was directed to pay the claim.",
-    "successful_arguments": [
-      "Waiting period exclusions must be specifically communicated to the policyholder in the policy document — insurer cannot rely on exclusions in internal underwriting guidelines not shared with the policyholder",
-      "IRDAI Health Insurance Regulations 2016: all exclusions must be specifically enumerated in the policy document in a readable and accessible manner"
-    ],
-    "failed_arguments": [],
-    "key_evidence": [
-      "Policyholder-facing policy schedule: piles surgery NOT listed in waiting period table",
-      "Insurer's internal underwriting file: piles listed in internal exclusion schedule",
-      "IRDAI Regulation 8: specific exclusion disclosure obligation"
-    ],
-    "source_citation": "District Consumer Disputes Redressal Commission, Rajasthan (synthetic — based on documented exclusion non-disclosure ruling patterns)",
-    "source_url": null
-  },
-  {
-    "id": "case_018",
-    "insurer": "New India Assurance",
-    "insurance_type": "health",
-    "claim_amount": 770000,
-    "rejection_reason": "ped_non_disclosure",
-    "condition": "liver cirrhosis",
-    "treatment_type": "hospitalization",
-    "policy_start_date": "2015-03-01",
-    "hospitalization_date": "2019-08-14",
-    "claim_date": "2019-09-01",
-    "relevant_policy_clause": "PED exclusion — 4-year waiting period for pre-existing conditions",
-    "disclosure_issue": true,
-    "documentation_issue": false,
-    "court_level": "state_commission",
-    "jurisdiction": "Telangana",
-    "outcome": "insurer_favorable",
-    "decision_summary": "State Commission upheld repudiation. Policyholder had been admitted to a different hospital for jaundice and elevated liver enzymes 18 months before policy commencement and had received treatment. This constituted a known, treated liver condition that was not disclosed. Waiting period had not elapsed at time of claim.",
-    "successful_arguments": [],
-    "failed_arguments": [
-      "Policyholder argued jaundice was unrelated to cirrhosis — commission held clinical progression from documented liver disease to cirrhosis was a foreseeable and medically connected outcome that should have been disclosed",
-      "Argument that a 'different hospital' record should not be attributed to the policyholder was rejected"
-    ],
-    "key_evidence": [
-      "Discharge summary from prior hospitalization (18 months pre-policy): elevated liver enzymes, jaundice, clinical suspicion of liver pathology",
-      "Prescription for hepatoprotective medication from prior hospitalization",
-      "Current admission records confirming decompensated cirrhosis with documented disease progression"
-    ],
-    "source_citation": "State Consumer Disputes Redressal Commission, Telangana (synthetic)",
-    "source_url": null
-  },
-  {
-    "id": "case_019",
-    "insurer": "Max Bupa Health Insurance",
-    "insurance_type": "health",
-    "claim_amount": 230000,
-    "rejection_reason": "documentation",
-    "condition": "fracture (tibia)",
-    "treatment_type": "surgery",
-    "policy_start_date": "2020-08-01",
-    "hospitalization_date": "2022-12-03",
-    "claim_date": "2022-12-20",
-    "relevant_policy_clause": "Claim submission — treating surgeon's certificate required; internal fixation surgery requires pre-authorization",
-    "disclosure_issue": false,
-    "documentation_issue": true,
-    "court_level": "ombudsman",
-    "jurisdiction": "Maharashtra",
-    "outcome": "policyholder_favorable",
-    "decision_summary": "Ombudsman held that pre-authorization rejection due to emergency surgical circumstances (accident victim brought in unconscious, surgery required immediately) cannot be sustained. Emergency pre-authorization waiver provisions apply. Insurer directed to settle claim in full.",
-    "successful_arguments": [
-      "Pre-authorization requirements are waived in genuine emergency situations per IRDAI emergency treatment guidelines",
-      "Patient was admitted unconscious following a road accident — obtaining pre-authorization was physically impossible",
-      "Hospital informed the insurer within 24 hours of admission, which met the emergency notification requirement"
-    ],
-    "failed_arguments": [],
-    "key_evidence": [
-      "FIR and ambulance records showing emergency road accident admission",
-      "Treating surgeon's emergency certificate: surgery commenced within 2 hours of admission",
-      "Hospital's post-admission notification to insurer timestamped 20 hours after admission"
-    ],
-    "source_citation": "Insurance Ombudsman, Maharashtra (synthetic — based on documented emergency pre-auth waiver rulings)",
-    "source_url": null
-  },
-  {
-    "id": "case_020",
-    "insurer": "Star Health Insurance",
-    "insurance_type": "health",
-    "claim_amount": 490000,
-    "rejection_reason": "partial_settlement",
-    "condition": "cancer (breast)",
-    "treatment_type": "hospitalization",
-    "policy_start_date": "2017-01-15",
-    "hospitalization_date": "2022-06-01",
-    "claim_date": "2022-07-10",
-    "relevant_policy_clause": "Sum insured Rs. 5,00,000; co-payment 20% for claims above Rs. 3,00,000",
-    "disclosure_issue": false,
-    "documentation_issue": false,
-    "court_level": "state_commission",
-    "jurisdiction": "Karnataka",
-    "outcome": "policyholder_favorable",
-    "decision_summary": "Insurer applied co-payment incorrectly — co-payment clause required 20% co-pay on the amount exceeding Rs. 3,00,000, not 20% on the entire claim amount. Commission directed recomputation and additional payment of Rs. 38,000.",
-    "successful_arguments": [
-      "Policy clause states '20% co-payment on the amount exceeding the threshold' — not on the full claim",
-      "Plain reading of the clause, as required by contra proferentem principle, favors the policyholder interpretation",
-      "Insurer's own policy wordings brochure contained an example that supported policyholder's calculation method"
-    ],
-    "failed_arguments": [],
-    "key_evidence": [
-      "Policy document with exact co-payment clause wording",
-      "Insurer's own product brochure with calculation example",
-      "Policyholder's calculation worksheet showing correct vs. insurer's methodology"
-    ],
-    "source_citation": "State Consumer Disputes Redressal Commission, Karnataka (synthetic — based on contra proferentem and co-payment calculation dispute patterns)",
-    "source_url": null
-  },
-  {
-    "id": "case_021",
-    "insurer": "XYZ General Insurance",
-    "insurance_type": "health",
-    "claim_amount": 310000,
-    "rejection_reason": "waiting_period",
-    "condition": "uterine fibroids",
-    "treatment_type": "surgery",
-    "policy_start_date": "2022-03-01",
-    "hospitalization_date": "2023-07-20",
-    "claim_date": "2023-08-05",
-    "relevant_policy_clause": "2-year waiting period for hysterectomy and fibroid removal procedures",
-    "disclosure_issue": false,
-    "documentation_issue": false,
-    "court_level": "ombudsman",
-    "jurisdiction": "Punjab",
-    "outcome": "insurer_favorable",
-    "decision_summary": "Ombudsman upheld waiting period. Surgery performed 16.5 months into the policy, within the 2-year waiting period for fibroid procedures. No emergency surgical certificate was produced. Waiting period clause was clearly disclosed in the policy schedule and health card issued at inception.",
-    "successful_arguments": [],
-    "failed_arguments": [
-      "Policyholder argued severe menorrhagia constituted urgency — no gynaecologist certificate of emergent surgical need was submitted",
-      "Argument that gynaecological conditions should have shorter waiting periods was a policy design question outside ombudsman's jurisdiction"
-    ],
-    "key_evidence": [
-      "Policy schedule clearly listing fibroid removal in 2-year waiting period",
-      "Elective surgery booking records showing pre-booked OT date",
-      "No gynaecologist urgency certificate in claim file"
-    ],
-    "source_citation": "Insurance Ombudsman, Punjab (synthetic)",
-    "source_url": null
-  },
-  {
-    "id": "case_022",
-    "insurer": "ABC Insurance",
-    "insurance_type": "health",
-    "claim_amount": null,
-    "rejection_reason": "ped_non_disclosure",
-    "condition": "unspecified",
-    "treatment_type": null,
-    "policy_start_date": null,
-    "hospitalization_date": null,
-    "claim_date": null,
-    "relevant_policy_clause": null,
-    "disclosure_issue": true,
     "documentation_issue": false,
     "court_level": "unknown",
     "jurisdiction": null,
-    "outcome": null,
-    "decision_summary": "INSUFFICIENT INFORMATION — This case file contains only a rejection letter stating repudiation on PED grounds. No policy document, no claim form, no medical records, no prior treatment history, and no forum or case number were provided. A credible assessment of merit, outcome probability, or applicable arguments is not possible without these foundational documents.",
-    "successful_arguments": null,
-    "failed_arguments": null,
-    "key_evidence": [
-      "Rejection letter only — no supporting documentation available"
+    "outcome": "partial_relief",
+    "decision_summary": "INSUFFICIENT INFORMATION — Case records are incomplete. A partial settlement of 55% was recorded but the specific sub-limit schedule applied, the arbitration proceedings, and the exact breakdown of accepted vs. rejected amounts are not documented in available records. Cannot draw reliable conclusions.",
+    "successful_arguments": [
+      "NOTE: Arguments in this case are incompletely documented. The following are partial records only.",
+      "Policyholder disputed the sub-limit applied to cardiac procedures"
     ],
-    "source_citation": "Marker case: insufficient information example — demonstrates system's explicit refusal to extrapolate when inputs are inadequate",
-    "source_url": null
+    "failed_arguments": [],
+    "key_evidence": [
+      "NOTE: Evidence records for this case are incomplete.",
+      "Partial policy schedule document (sub-limit schedule page missing from corpus)",
+      "Insurer's partial settlement letter (amounts redacted in available copy)"
+    ],
+    "source_citation": "Incomplete records — do not cite as precedent without verification",
+    "regulation_sources": [
+      "case_007 — Future Generali Partial Settlement Dispute 2024 (incomplete records)"
+    ],
+    "source_url": null,
+    "insufficient_information": true
   }
 ]

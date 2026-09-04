@@ -44,12 +44,13 @@ class CaseFingerprint(BaseModel):
     insurer: str
     insurance_type: str = "health"
     claim_amount: Optional[float] = None
-    rejection_reason: RejectionCategory
+    rejection_reason: Optional[RejectionCategory] = None
     condition: str = Field(description="Medical condition at issue, e.g. 'diabetes'")
     treatment_type: Optional[str] = None
-    policy_start_date: Optional[str] = None  # ISO date
+    policy_start_date: Optional[str] = None   # ISO date
     hospitalization_date: Optional[str] = None  # ISO date
     claim_date: Optional[str] = None
+    claim_status: Optional[str] = None         # "rejected" | "partial"
     relevant_policy_clause: Optional[str] = None
     disclosure_issue: bool = False
     documentation_issue: bool = False
@@ -62,8 +63,10 @@ class CaseFingerprint(BaseModel):
     successful_arguments: Optional[list[str]] = None
     failed_arguments: Optional[list[str]] = None
     key_evidence: Optional[list[str]] = None
+    regulation_sources: Optional[list[str]] = None  # Person C uses these for citations
     source_citation: Optional[str] = None  # e.g. "NCDRC, Consumer Case No. X, 2023"
     source_url: Optional[str] = None
+    insufficient_information: bool = False  # True for the "Judge Q1" honesty case
 
 
 class ExtractionResult(BaseModel):
@@ -79,15 +82,27 @@ class SimilarCaseMatch(BaseModel):
     overall_score: float  # 0-1
     score_breakdown: dict[str, float]  # e.g. {"legal_issue": 0.35, ...}
     match_reasons: list[str]  # human-readable, e.g. "Same insurer", "Same denial category"
+    # Per spec: match_explanation booleans required (never return bare score to frontend)
+    match_explanation: dict[str, bool] = Field(
+        default_factory=lambda: {
+            "same_insurer": False,
+            "same_reason": False,
+            "similar_clause": False,
+            "similar_facts": False,
+        }
+    )
 
 
 class CaseIntelligence(BaseModel):
     """The 'why did they win/lose' + evidence gap + counterargument bundle for one matched case."""
     case_id: str
+    outcome: str
     why_outcome_happened: str
-    missing_evidence: list[str]
-    likely_insurer_counterarguments: list[str]
-    grounding_note: str  # what this is/isn't based on, e.g. "insufficient information" fallback
+    successful_arguments: list[str] = []
+    evidence_that_mattered: list[str] = []
+    missing_evidence: list[str] = []
+    likely_insurer_counterarguments: list[str] = []
+    grounding_note: str  # what this is/isn't based on; "insufficient information" if applicable
 
 
 class CaseAssessment(BaseModel):
@@ -99,3 +114,14 @@ class CaseAssessment(BaseModel):
 class ActionPlan(BaseModel):
     steps: list[str]
     appeal_letter_draft: Optional[str] = None
+
+
+# ---------------------------------------------------------------------------
+# Standard error shape — agreed with Person C.
+# Every error response from every endpoint returns this exact shape.
+# HTTP codes: 422 = parse/schema failure, 404 = not found, 500 = unexpected
+# ---------------------------------------------------------------------------
+
+class ErrorResponse(BaseModel):
+    error: str    # machine-readable slug
+    message: str  # human-readable, safe to display in UI
