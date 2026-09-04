@@ -1,0 +1,124 @@
+[
+  {
+    "id": "case_001",
+    "insurer": "ABC Insurance",
+    "insurance_type": "health",
+    "claim_amount": 385000,
+    "rejection_reason": "ped_non_disclosure",
+    "condition": "diabetes",
+    "treatment_type": "hospitalization",
+    "policy_start_date": "2020-01-15",
+    "hospitalization_date": "2023-06-10",
+    "claim_date": "2023-06-25",
+    "relevant_policy_clause": "PED exclusion clause, waiting period 4 years",
+    "disclosure_issue": true,
+    "documentation_issue": false,
+    "court_level": "state_commission",
+    "jurisdiction": "Maharashtra",
+    "outcome": "policyholder_favorable",
+    "decision_summary": "Commission held that insurer failed to prove the policyholder had prior knowledge or diagnosis of diabetes before policy inception; mere post-hoc lab values were insufficient to establish non-disclosure.",
+    "successful_arguments": [
+      "No documented diagnosis or treatment for diabetes existed before the policy start date",
+      "Insurer relied only on a single post-hospitalization lab report to infer a pre-existing condition, which the commission found insufficient",
+      "Policyholder had disclosed all conditions known to them at the time of application"
+    ],
+    "failed_arguments": [],
+    "key_evidence": [
+      "Pre-policy medical records showing no diabetes diagnosis",
+      "Proposal form copy showing accurate disclosure of known conditions",
+      "Treating doctor's certificate on date of first diagnosis"
+    ],
+    "source_citation": "State Consumer Disputes Redressal Commission, Maharashtra, Consumer Case (illustrative, verify before public use)",
+    "source_url": null
+  },
+  {
+    "id": "case_002",
+    "insurer": "ABC Insurance",
+    "insurance_type": "health",
+    "claim_amount": 210000,
+    "rejection_reason": "ped_non_disclosure",
+    "condition": "diabetes",
+    "treatment_type": "hospitalization",
+    "policy_start_date": "2021-03-01",
+    "hospitalization_date": "2023-02-14",
+    "claim_date": "2023-03-01",
+    "relevant_policy_clause": "PED exclusion clause, waiting period 4 years",
+    "disclosure_issue": true,
+    "documentation_issue": false,
+    "court_level": "district_commission",
+    "jurisdiction": "Karnataka",
+    "outcome": "policyholder_favorable",
+    "decision_summary": "Insurer's own empanelled doctor's pre-policy medical check-up report did not flag diabetes; commission held insurer cannot repudiate on a condition its own underwriting process missed.",
+    "successful_arguments": [
+      "Insurer's pre-issuance medical examination did not detect or record diabetes",
+      "Burden of proof for non-disclosure lies with insurer and was not discharged"
+    ],
+    "failed_arguments": [],
+    "key_evidence": [
+      "Insurer's own pre-policy medical examination report",
+      "Discharge summary from treating hospital"
+    ],
+    "source_citation": "District Consumer Disputes Redressal Commission, Karnataka (illustrative, verify before public use)",
+    "source_url": null
+  },
+  {
+    "id": "case_003",
+    "insurer": "XYZ General Insurance",
+    "insurance_type": "health",
+    "claim_amount": 450000,
+    "rejection_reason": "ped_non_disclosure",
+    "condition": "diabetes",
+    "treatment_type": "hospitalization",
+    "policy_start_date": "2019-08-20",
+    "hospitalization_date": "2023-09-05",
+    "claim_date": "2023-09-20",
+    "relevant_policy_clause": "PED exclusion clause, waiting period 3 years",
+    "disclosure_issue": true,
+    "documentation_issue": true,
+    "court_level": "national_commission",
+    "jurisdiction": "Delhi",
+    "outcome": "insurer_favorable",
+    "decision_summary": "Commission found clear documentary evidence (prior prescription records dated before policy inception) that policyholder was aware of and being treated for diabetes but did not disclose it in the proposal form.",
+    "successful_arguments": [],
+    "failed_arguments": [
+      "Policyholder argued they were unaware of the diagnosis, but pre-policy pharmacy records and a treating physician's prescription pre-dating the policy contradicted this",
+      "Argument that the condition was 'mild and unremarkable' did not overcome the non-disclosure finding"
+    ],
+    "key_evidence": [
+      "Pre-policy prescription dated 8 months before policy inception, explicitly for diabetes management"
+    ],
+    "source_citation": "National Consumer Disputes Redressal Commission (illustrative, verify before public use)",
+    "source_url": null
+  },
+  {
+    "id": "case_004",
+    "insurer": "ABC Insurance",
+    "insurance_type": "health",
+    "claim_amount": 300000,
+    "rejection_reason": "waiting_period",
+    "condition": "knee replacement",
+    "treatment_type": "surgery",
+    "policy_start_date": "2022-11-01",
+    "hospitalization_date": "2023-08-01",
+    "claim_date": "2023-08-15",
+    "relevant_policy_clause": "2-year waiting period for joint replacement surgery",
+    "disclosure_issue": false,
+    "documentation_issue": false,
+    "court_level": "district_commission",
+    "jurisdiction": "Tamil Nadu",
+    "outcome": "partial_relief",
+    "decision_summary": "Waiting period clause was validly applied and upheld, but commission directed partial payment for the portion of treatment (diagnostics, medication) not directly tied to the excluded surgical procedure.",
+    "successful_arguments": [
+      "Ancillary treatment costs unrelated to the specific excluded procedure should be assessed separately"
+    ],
+    "failed_arguments": [
+      "Argument that the waiting period clause itself was unconscionable was rejected — it was clearly disclosed and IRDAI-compliant"
+    ],
+    "key_evidence": [
+      "Itemized hospital bill separating surgical and non-surgical costs",
+      "Policy document with waiting period schedule"
+    ],
+    "source_citation": "District Consumer Disputes Redressal Commission, Tamil Nadu (illustrative, verify before public use)",
+    "source_url": null
+  }
+]
