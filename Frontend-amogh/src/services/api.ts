@@ -1,7 +1,7 @@
 /**
  * ClaimShield Unified API Service Layer
  * Automatically connects to Person B's FastAPI backend (http://localhost:8000)
- * with a 6-second timeout, falling back silently to the offline demo engine/fixtures
+ * with a 6-second timeout, falling back to the offline parser/engine when needed
  * so that judges NEVER see a frozen screen or broken demo.
  */
 
@@ -12,7 +12,6 @@ import type {
   AppealResult,
 } from "../types/claim";
 import {
-  HERO_FINGERPRINT,
   HERO_CASE_INTELLIGENCE,
   HERO_APPEAL_RESULT,
   INSUFFICIENT_INFO_FINGERPRINT,
@@ -49,11 +48,11 @@ function setApiMode(mode: ApiMode) {
   }
 }
 
-// Timeout helper: fail fast in 6 seconds so demo never hangs
-async function callBackend<T>(path: string, body: unknown): Promise<T> {
+// Keep extraction long enough for the LLM while keeping non-LLM calls fast.
+async function callBackend<T>(path: string, body: unknown, timeoutMs = 6000): Promise<T> {
   const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 6000);
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
 
   try {
     const res = await fetch(`${baseUrl}${path}`, {
@@ -63,11 +62,14 @@ async function callBackend<T>(path: string, body: unknown): Promise<T> {
       signal: controller.signal,
     });
 
+    const responseText = await res.text();
     if (!res.ok) {
-      throw new Error(`Backend ${path} returned HTTP ${res.status}`);
+      throw new Error(
+        `Backend ${path} returned HTTP ${res.status}: ${responseText || "(empty response body)"}`
+      );
     }
 
-    const data = await res.json();
+    const data = JSON.parse(responseText);
     setApiMode("live");
     return data as T;
   } catch (err) {
@@ -76,6 +78,106 @@ async function callBackend<T>(path: string, body: unknown): Promise<T> {
   } finally {
     clearTimeout(timeout);
   }
+}
+
+const OFFLINE_REASON_KEYWORDS: Array<[string, string]> = [
+  ["pre-existing", "ped_non_disclosure"],
+  ["pre existing", "ped_non_disclosure"],
+  ["preexisting", "ped_non_disclosure"],
+  ["non-disclosure", "ped_non_disclosure"],
+  ["nondisclosure", "ped_non_disclosure"],
+  ["concealment", "ped_non_disclosure"],
+  ["waiting period", "waiting_period"],
+  ["wait period", "waiting_period"],
+  ["moratorium", "waiting_period"],
+  ["exclusion", "policy_exclusion"],
+  ["excluded", "policy_exclusion"],
+  ["not covered", "policy_exclusion"],
+  ["not payable", "policy_exclusion"],
+  ["cosmetic", "policy_exclusion"],
+  ["documentation", "documentation"],
+  ["incomplete", "documentation"],
+  ["missing", "documentation"],
+  ["partial settlement", "partial_settlement"],
+  ["sub-limit", "partial_settlement"],
+  ["sublimit", "partial_settlement"],
+  ["co-payment", "partial_settlement"],
+  ["copayment", "partial_settlement"],
+  ["deductible", "partial_settlement"],
+];
+
+const CONDITION_KEYWORDS = [
+  "diabetic ketoacidosis", "diabetes", "hernia", "fracture", "cancer",
+  "hypertension", "cardiac", "heart attack", "kidney", "cataract",
+  "arthritis", "appendicitis",
+];
+
+function firstDate(text: string, labels: string[]): string {
+  const datePattern =
+    "(?:\\d{1,2}[/-]\\d{1,2}[/-]\\d{2,4}|\\d{1,2}\\s+[A-Za-z]+\\s+\\d{4}|[A-Za-z]+\\s+\\d{1,2},?\\s+\\d{4})";
+  for (const label of labels) {
+    const match = text.match(new RegExp(`${label}[^\\n]{0,80}?(${datePattern})`, "i"));
+    if (match) return match[1];
+  }
+  return "Not identified";
+}
+
+function offlineExtractClaim(policyText: string, rejectionText: string): ExtractedFingerprint {
+  const text = `${rejectionText}\n${policyText}`;
+  const lowerText = text.toLowerCase();
+  const insurerLine = text.match(/^([^\n]*(?:insurance|insurer)[^\n]*)$/im);
+  const insurer = (insurerLine?.[1]?.trim() || "Not identified").replace(
+    /\s+(?:rejected|denied|repudiated|declined)\b.*$/i,
+    ""
+  );
+  const amountMatch =
+    text.match(
+      /(?:claimed amount|claim amount|total admissible expenses|sum insured)[^\n]*(?:₹|rs\.?|inr)\s*([\d,]+(?:\.\d+)?)/i
+    ) || text.match(/(?:₹|rs\.?|inr)\s*([\d,]+(?:\.\d+)?)/i);
+  const reasonEntry = OFFLINE_REASON_KEYWORDS.find(([keyword]) => lowerText.includes(keyword));
+  const condition = CONDITION_KEYWORDS.find((keyword) => lowerText.includes(keyword)) || "Not identified";
+  const claimAmount = amountMatch ? Number(amountMatch[1].replace(/,/g, "")) : 0;
+  const reason = reasonEntry?.[1] || "not_identified";
+  const policyStartDate = firstDate(text, ["inception", "commencement", "policy period", "policy commenced"]);
+  const hospitalizationDate = firstDate(text, ["hospitalization", "admission", "hospitalisation"]);
+  const sourceQuote = (value: string) => value === "Not identified" ? "" : value;
+  const hash = Math.abs([...text].reduce((total, char) => ((total << 5) - total + char.charCodeAt(0)) | 0, 0));
+  const fieldsNeedingReview: string[] = [
+    { field: "insurer", value: insurer },
+    { field: "claim_amount", value: claimAmount },
+    { field: "rejection_reason", value: reason },
+    { field: "condition", value: condition },
+    { field: "policy_start_date", value: policyStartDate },
+    { field: "hospitalization_date", value: hospitalizationDate },
+  ]
+    .filter(({ value }) => value === "Not identified" || value === "not_identified" || value === 0)
+    .map(({ field }) => field);
+
+  return {
+    id: `offline_${hash}`,
+    offline: true,
+    insurer,
+    insurance_type: "health",
+    claim_amount: claimAmount,
+    rejection_reason: reason,
+    condition,
+    policy_start_date: policyStartDate,
+    hospitalization_date: hospitalizationDate,
+    claim_status: "Rejected",
+    relevant_clause: (text.match(/(?:clause|section)\s+[\w.-]+[^\n]*/i)?.[0] || "Not identified").trim(),
+    court_level: "Unknown",
+    field_confidence: {
+      insurer: "low", claim_amount: "low", rejection_reason: "low", condition: "low",
+      policy_start_date: "low", hospitalization_date: "low", relevant_clause: "low",
+    },
+    field_source_quote: {
+      insurer: sourceQuote(insurer),
+      claim_amount: amountMatch?.[0] || "",
+      rejection_reason: reasonEntry?.[0] || "",
+      condition: condition === "Not identified" ? "" : condition,
+    },
+    fields_needing_review: fieldsNeedingReview,
+  };
 }
 
 // =========================================================
@@ -87,10 +189,6 @@ export async function extractClaim(
   rejectionText: string,
   additionalText = ""
 ): Promise<ExtractedFingerprint> {
-  const isInsufficient =
-    rejectionText.toLowerCase().includes("clause 7") ||
-    rejectionText.toLowerCase().includes("unspecified");
-
   try {
     const res = await callBackend<{
       fingerprint: any;
@@ -101,34 +199,47 @@ export async function extractClaim(
       policy_text: policyText,
       rejection_text: rejectionText,
       additional_text: additionalText,
-    });
+    }, 60000);
 
     const fp = res.fingerprint || res;
+    const coreFields = [
+      "insurer", "claim_amount", "rejection_reason", "condition",
+      "policy_start_date", "hospitalization_date",
+    ];
+    const fieldsNeedingReview = (res.fields_needing_review || []).filter((field) =>
+      coreFields.includes(field)
+    );
+    const confidence = (field: string, fallback: "high" | "medium" | "low" = "low") =>
+      fieldsNeedingReview.includes(field) ? "low" : ((res.extraction_confidence as any) || fallback);
     return {
-      insurer: fp.insurer || "Extracted Insurer",
+      id: fp.id || "user_case",
+      insurer: fp.insurer || "Not identified",
       insurance_type: "health",
-      claim_amount: fp.claim_amount || 0,
-      rejection_reason: fp.rejection_reason || "Rejection under policy clause",
-      condition: fp.condition || "Extracted Medical Condition",
-      policy_start_date: fp.policy_start_date || "2021-01-01",
-      hospitalization_date: fp.hospitalization_date || "2023-01-01",
-      claim_status: fp.claim_status || "Rejected",
+      claim_amount: fp.claim_amount ?? 0,
+      rejection_reason: fp.rejection_reason || "Not identified",
+      condition: fp.condition || "Not identified",
+      policy_start_date: fp.policy_start_date || "Not identified",
+      hospitalization_date: fp.hospitalization_date || "Not identified",
+      claim_status: fp.claim_status || "Not identified",
       relevant_clause: fp.relevant_policy_clause || fp.relevant_clause || "",
       court_level: fp.court_level || "Unknown",
       field_confidence: {
-        insurer: (res.extraction_confidence as any) || "high",
-        rejection_reason: (res.extraction_confidence as any) || "high",
-        condition: (res.extraction_confidence as any) || "medium",
+        insurer: confidence("insurer", "high"),
+        claim_amount: confidence("claim_amount"),
+        rejection_reason: confidence("rejection_reason", "high"),
+        condition: confidence("condition", "medium"),
+        policy_start_date: confidence("policy_start_date"),
+        hospitalization_date: confidence("hospitalization_date"),
       },
       field_source_quote: res.source_spans || {},
-      fields_needing_review: res.fields_needing_review || [],
+      fields_needing_review: fieldsNeedingReview,
     };
-  } catch (_err) {
-    console.warn("Backend /extract unavailable, using offline extraction fallback.");
-    if (isInsufficient) {
-      return { ...INSUFFICIENT_INFO_FINGERPRINT };
+  } catch (err) {
+    console.warn("Backend /extract unavailable, using offline extraction fallback.", err);
+    if (!policyText.trim() && !rejectionText.trim() && !additionalText.trim()) {
+      return { ...INSUFFICIENT_INFO_FINGERPRINT, offline: true };
     }
-    return { ...HERO_FINGERPRINT };
+    return offlineExtractClaim(policyText, rejectionText);
   }
 }
 
@@ -205,8 +316,8 @@ export async function findSimilarCases(
       });
     }
     throw new Error("Empty backend matches");
-  } catch (_err) {
-    console.warn("Backend /similar-cases unavailable, using offline similarity engine.");
+  } catch (err) {
+    console.warn("Backend /similar-cases unavailable, using offline similarity engine.", err);
     return rankCorpus(fingerprint, HISTORICAL_CORPUS, 5);
   }
 }
@@ -269,8 +380,8 @@ export async function getCaseIntelligence(
       grounding_note: res.grounding_note || "Grounded in retrieved court orders.",
       case_id: matchedCaseId,
     };
-  } catch (_err) {
-    console.warn("Backend /case-intelligence unavailable, using offline intelligence fallback.");
+  } catch (err) {
+    console.warn("Backend /case-intelligence unavailable, using offline intelligence fallback.", err);
     return { ...HERO_CASE_INTELLIGENCE, case_id: matchedCaseId };
   }
 }
@@ -308,8 +419,8 @@ export async function generateAppeal(
       cited_case_ids: precedentIds,
       action_plan: HERO_APPEAL_RESULT.action_plan,
     };
-  } catch (_err) {
-    console.warn("Backend /appeal unavailable, using offline appeal fallback.");
+  } catch (err) {
+    console.warn("Backend /appeal unavailable, using offline appeal fallback.", err);
     return {
       ...HERO_APPEAL_RESULT,
       cited_case_ids: precedentIds.length > 0 ? precedentIds : HERO_APPEAL_RESULT.cited_case_ids,

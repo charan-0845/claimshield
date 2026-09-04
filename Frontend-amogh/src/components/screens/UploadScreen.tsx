@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import * as pdfjsLib from "pdfjs-dist";
 import {
   Upload,
   Zap,
@@ -14,6 +15,22 @@ interface UploadScreenProps {
   isLoading: boolean;
 }
 
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.mjs",
+  import.meta.url
+).toString();
+
+async function extractPdfText(file: File): Promise<string> {
+  const pdf = await pdfjsLib.getDocument({ data: await file.arrayBuffer() }).promise;
+  const pages: string[] = [];
+  for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
+    const page = await pdf.getPage(pageNumber);
+    const content = await page.getTextContent();
+    pages.push(content.items.map((item) => ("str" in item ? item.str : "")).join(" "));
+  }
+  return pages.join("\n\n").trim();
+}
+
 export const UploadScreen: React.FC<UploadScreenProps> = ({
   onAnalyze,
   onLoadHeroDemo,
@@ -22,6 +39,39 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
 }) => {
   const [rejectionText, setRejectionText] = useState("");
   const [policyText, setPolicyText] = useState("");
+  const [rejectionFileName, setRejectionFileName] = useState("");
+  const [policyFileName, setPolicyFileName] = useState("");
+  const [isReadingPdf, setIsReadingPdf] = useState(false);
+  const [pdfError, setPdfError] = useState("");
+
+  const handlePdfChange = async (
+    event: React.ChangeEvent<HTMLInputElement>,
+    setText: React.Dispatch<React.SetStateAction<string>>,
+    setFileName: React.Dispatch<React.SetStateAction<string>>,
+    required: boolean
+  ) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setPdfError("");
+    if (file.type !== "application/pdf") {
+      setPdfError("Please select a PDF file.");
+      return;
+    }
+    setIsReadingPdf(true);
+    try {
+      const text = await extractPdfText(file);
+      if (!text) {
+        throw new Error("No selectable text was found. Scanned PDFs need OCR before upload.");
+      }
+      setText(text);
+      setFileName(file.name);
+    } catch (error) {
+      setPdfError(error instanceof Error ? error.message : "Could not read this PDF.");
+      if (required) setText("");
+    } finally {
+      setIsReadingPdf(false);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -122,17 +172,13 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
             <label className="form-label" htmlFor="rejectionInput">
               * Claim Rejection / Repudiation Letter
             </label>
-            <textarea
-              id="rejectionInput"
-              className="form-textarea"
-              style={{ height: "240px" }}
-              placeholder={`Paste text from insurer rejection letter...\nExample: 'We refer to your claim CLM-89210 under Policy ABC-992011. On reviewing hospital records showing HbA1c 9.2%, the claim is repudiated under Clause 4.1 for non-disclosure of pre-existing Diabetes Mellitus...'`}
-              value={rejectionText}
-              onChange={(e) => setRejectionText(e.target.value)}
-              required
-            />
+            <label className="form-input" htmlFor="rejectionInput" style={{ display: "flex", alignItems: "center", gap: "10px", height: "48px", cursor: "pointer" }}>
+              <Upload size={17} />
+              <span>{rejectionFileName || "Choose rejection letter PDF"}</span>
+            </label>
+            <input id="rejectionInput" type="file" accept="application/pdf,.pdf" onChange={(event) => handlePdfChange(event, setRejectionText, setRejectionFileName, true)} required={!rejectionText} style={{ display: "none" }} />
             <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "6px" }}>
-              The system extracts denial category, dates, claimed amount, and quoted clauses.
+              Required PDF. Text is extracted in your browser before analysis.
             </div>
           </div>
 
@@ -141,16 +187,13 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
             <label className="form-label" htmlFor="policyInput">
               Policy Terms / Exclusion Clauses (Optional)
             </label>
-            <textarea
-              id="policyInput"
-              className="form-textarea"
-              style={{ height: "240px" }}
-              placeholder={`Paste relevant clauses from your policy document...\nExample: 'Section 4.1: Pre-Existing Diseases: Benefits will not be available for any condition or complication arising therefrom until 48 months of continuous coverage have elapsed...'`}
-              value={policyText}
-              onChange={(e) => setPolicyText(e.target.value)}
-            />
+            <label className="form-input" htmlFor="policyInput" style={{ display: "flex", alignItems: "center", gap: "10px", height: "48px", cursor: "pointer" }}>
+              <Upload size={17} />
+              <span>{policyFileName || "Choose policy PDF (optional)"}</span>
+            </label>
+            <input id="policyInput" type="file" accept="application/pdf,.pdf" onChange={(event) => handlePdfChange(event, setPolicyText, setPolicyFileName, false)} style={{ display: "none" }} />
             <div style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginTop: "6px" }}>
-              Helps compare wording against standard IRDAI guidelines and court interpretations.
+              Optional PDF. Helps compare wording against policy clauses.
             </div>
           </div>
         </div>
@@ -170,13 +213,15 @@ export const UploadScreen: React.FC<UploadScreenProps> = ({
         >
           <div style={{ display: "flex", alignItems: "center", gap: "8px", fontSize: "0.82rem", color: "var(--text-muted)" }}>
             <CheckCircle2 size={15} />
-            <span>Documents are processed in memory and matched against verified legal corpus.</span>
+            <span>{isReadingPdf ? "Reading PDF text..." : "Documents are processed in memory."}</span>
           </div>
+
+          {pdfError && <div style={{ color: "var(--unfavorable)", fontSize: "0.82rem", width: "100%" }}>{pdfError}</div>}
 
           <button
             type="submit"
             className="btn-primary"
-            disabled={isLoading || !rejectionText.trim()}
+            disabled={isLoading || isReadingPdf || !rejectionText.trim()}
           >
             {isLoading ? (
               <>

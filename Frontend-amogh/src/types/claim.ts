@@ -50,6 +50,7 @@ export interface HistoricalCase {
 
 export interface ExtractedFingerprint {
   id?: string;
+  offline?: boolean;
   insurer: string;
   insurance_type: "health";
   claim_amount: number;

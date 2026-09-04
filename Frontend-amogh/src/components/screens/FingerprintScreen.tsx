@@ -155,6 +155,21 @@ export const FingerprintScreen: React.FC<FingerprintScreenProps> = ({
         </div>
       </div>
 
+      {fp.offline && (
+        <div
+          style={{
+            padding: "12px 16px",
+            border: "1px solid var(--partial)",
+            borderRadius: "var(--radius-md)",
+            color: "var(--text-muted)",
+            background: "var(--surface)",
+            fontSize: "0.85rem",
+          }}
+        >
+          Backend unavailable — this fingerprint was extracted using a simplified offline parser, not the AI model.
+        </div>
+      )}
+
       {/* Fields Needing Review Notice */}
       {fp.fields_needing_review && fp.fields_needing_review.length > 0 && (
         <div
@@ -241,7 +256,7 @@ export const FingerprintScreen: React.FC<FingerprintScreenProps> = ({
             />
           ) : (
             <div style={{ fontSize: "1.2rem", fontWeight: 800, color: "var(--text)" }}>
-              ₹{fp.claim_amount?.toLocaleString("en-IN")}
+              {fp.claim_amount > 0 ? `₹${fp.claim_amount.toLocaleString("en-IN")}` : "Not identified"}
             </div>
           )}
 
