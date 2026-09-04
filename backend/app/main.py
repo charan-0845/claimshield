@@ -21,6 +21,7 @@ from pathlib import Path
 from typing import Optional
 
 from fastapi import FastAPI, HTTPException
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
@@ -104,6 +105,27 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request, exc: RequestValidationError):
+    """
+    Global exception handler for Pydantic validation errors.
+    Reshapes default FastAPI 422 errors into Person C's agreed error contract:
+    {"error": "validation_failed", "message": "<human readable message>"}
+    """
+    errors = exc.errors()
+    messages = []
+    for err in errors:
+        loc_parts = [str(l) for l in err.get("loc", []) if l != "body"]
+        loc = " -> ".join(loc_parts)
+        msg = err.get("msg", "Invalid value")
+        messages.append(f"{loc}: {msg}" if loc else msg)
+    human_message = "; ".join(messages) or "Validation failed for input data."
+    return JSONResponse(
+        status_code=422,
+        content={"error": "validation_failed", "message": human_message},
+    )
 
 # ---------------------------------------------------------------------------
 # LLM helper
@@ -479,9 +501,14 @@ def generate_appeal(req: AppealRequest):
         return _appeal_template_fallback(req, precedents)
 
     # Build action plan and citations from the corpus data (grounded, not invented)
-    citations = [p.source_citation for p in precedents if p.source_citation]
+    # Filter out any synthetic / illustrative placeholders so they never leak into user outputs
+    raw_citations = []
     for p in precedents:
-        citations.extend(p.regulation_sources or [])
+        if p.source_citation:
+            raw_citations.append(p.source_citation)
+        raw_citations.extend(p.regulation_sources or [])
+
+    clean_citations = [c for c in raw_citations if not _is_synthetic_citation(c)]
 
     action_plan = [
         "Submit this appeal letter to the insurer's Grievance Redressal Officer (GRO) "
@@ -498,8 +525,15 @@ def generate_appeal(req: AppealRequest):
     return {
         "appeal_letter": letter,
         "action_plan": action_plan,
-        "citations_used": list(dict.fromkeys(citations)),  # deduplicate, preserve order
+        "citations_used": list(dict.fromkeys(clean_citations)),  # deduplicate, preserve order
     }
+
+
+def _is_synthetic_citation(text: Optional[str]) -> bool:
+    if not text:
+        return True
+    lower = text.lower()
+    return "illustrative" in lower or "synthetic" in lower
 
 
 def _appeal_template_fallback(req: AppealRequest, precedents: list[CaseFingerprint]) -> dict:
@@ -513,7 +547,11 @@ def _appeal_template_fallback(req: AppealRequest, precedents: list[CaseFingerpri
     condition = fp.condition or "the medical condition"
     amount = f"₹{fp.claim_amount:,.0f}" if fp.claim_amount else "the claimed amount"
     reason = fp.rejection_reason.value if fp.rejection_reason else "the stated reason"
-    precedent_refs = ", ".join(p.source_citation or p.id for p in precedents) or "N/A"
+    valid_precedent_refs = [
+        p.source_citation for p in precedents
+        if p.source_citation and not _is_synthetic_citation(p.source_citation)
+    ]
+    precedent_refs = ", ".join(valid_precedent_refs) or "relevant IRDAI regulations and provisions"
 
     letter = f"""To,
 The Grievance Redressal Officer,
@@ -546,11 +584,13 @@ Yours faithfully,
 [Date of writing]
 [Contact details]"""
 
-    citations = []
+    raw_citations = []
     for p in precedents:
         if p.source_citation:
-            citations.append(p.source_citation)
-        citations.extend(p.regulation_sources or [])
+            raw_citations.append(p.source_citation)
+        raw_citations.extend(p.regulation_sources or [])
+
+    clean_citations = [c for c in raw_citations if not _is_synthetic_citation(c)]
 
     action_plan = [
         "Submit this letter to the insurer's Grievance Redressal Officer by registered post/email.",
@@ -564,7 +604,7 @@ Yours faithfully,
     return {
         "appeal_letter": letter,
         "action_plan": action_plan,
-        "citations_used": list(dict.fromkeys(citations)),
+        "citations_used": list(dict.fromkeys(clean_citations)),
     }
 
 
