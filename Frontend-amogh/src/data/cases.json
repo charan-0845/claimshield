@@ -1,0 +1,368 @@
+[
+  {
+    "case_id": "case_001",
+    "case_title": "Rajesh Sharma vs ABC General Insurance Co.",
+    "court": "State Consumer Disputes Redressal Commission",
+    "jurisdiction": "Maharashtra",
+    "case_number": "CC/19/482",
+    "date": "2023-04-12",
+    "insurer": "ABC Insurance",
+    "insurance_type": "health",
+    "claim_amount": 385000,
+    "issue": "Repudiation of diabetes hospitalization claim alleging pre-existing disease non-disclosure",
+    "denial_reason": "Pre-existing disease non-disclosure under PED Clause 4.1",
+    "policy_clause": "Section 4.1: Pre-Existing Diseases exclusion with 48 months waiting period",
+    "facts": "Policyholder obtained health cover in Jan 2020. Hospitalized for diabetic ketoacidosis in June 2023. Insurer repudiated claim based on admission HbA1c of 9.2%, alleging diabetes must have pre-existed policy inception.",
+    "policyholder_argument": "No medical record or clinical diagnosis of diabetes existed prior to Jan 2020. Proposal form disclosed all known facts in good faith. An elevated post-inception HbA1c test cannot serve as retrospective proof of prior knowledge.",
+    "insurer_argument": "High HbA1c indicates longstanding metabolic disorder spanning at least 4 to 5 years, which the insured deliberately suppressed in the proposal form.",
+    "court_reasoning": "Burden of proof lies strictly on the insurer to produce documentary evidence of prior diagnosis or consultation before policy issuance. Mere clinical presumption or retrospective blood tests without prior medical consultation records is legally insufficient to repudiate.",
+    "decision": "Insurer ordered to pay full claim amount of ₹3,85,000 with 9% interest and ₹25,000 compensation for deficiency in service.",
+    "outcome_category": "Policyholder favorable",
+    "relief": "₹3,85,000 claim + 9% interest + ₹25,000 litigation cost",
+    "case_status": "Disposed in favor of Complainant",
+    "source_url": "https://cms.nic.in/ncdrc/state/maharashtra/CC19482.pdf",
+    "source_citation": "State CDRC Maharashtra, CC/19/482 (2023)",
+    "successful_arguments": [
+      "No documented diagnosis or prescription existed prior to policy inception",
+      "Burden of proof of concealment rests on insurer and cannot be discharged by inference alone",
+      "Proposal form was filled transparently based on known medical state"
+    ],
+    "failed_arguments": [
+      "Insurer's contention that elevated laboratory biomarkers constitute legal proof of pre-policy diagnosis"
+    ],
+    "key_evidence": [
+      "Treating physician certificate confirming first diagnosis post-policy inception",
+      "Original proposal form",
+      "Hospital discharge summary without past medical history of endocrine disorder"
+    ]
+  },
+  {
+    "case_id": "case_002",
+    "case_title": "Smt. Sunita Rao vs ABC Health Insurance Ltd.",
+    "court": "District Consumer Disputes Redressal Commission",
+    "jurisdiction": "Karnataka",
+    "case_number": "CC/21/105",
+    "date": "2023-08-20",
+    "insurer": "ABC Insurance",
+    "insurance_type": "health",
+    "claim_amount": 210000,
+    "issue": "Repudiation of diabetes claim despite clear pre-policy medical check-up by empanelled doctor",
+    "denial_reason": "Non-disclosure of Type-2 Diabetes Mellitus",
+    "policy_clause": "Exclusion 4.1: Pre-existing condition waiting period",
+    "facts": "Insurer conducted mandatory pre-issuance medical screening by its empanelled diagnostic center in March 2021 where fasting sugar was reported within normal limits. In 2023, insured claimed for diabetes-related complications, repudiated by insurer.",
+    "policyholder_argument": "Underwriter subjected applicant to independent medical examination prior to policy acceptance. Insurer cannot repudiate on a condition its own medical panel screened and cleared.",
+    "insurer_argument": "Screening does not waive policyholder duty of utmost good faith (uberrima fides).",
+    "court_reasoning": "When an insurer subjects an insured to medical check-up by empanelled doctors and accepts premium, it is estopped from subsequently alleging suppression of detectable pre-existing conditions without specific proof of fraud.",
+    "decision": "Repudiation quashed. Claim allowed in full with ₹15,000 costs.",
+    "outcome_category": "Policyholder favorable",
+    "relief": "₹2,10,000 full reimbursement + ₹15,000 costs",
+    "case_status": "Final Order",
+    "source_url": "https://karnatakastatedisputes.gov.in/orders/2023/105",
+    "source_citation": "District CDRC Bangalore, CC/21/105 (2023)",
+    "successful_arguments": [
+      "Empanelled medical examination cleared policyholder at inception",
+      "Doctrine of estoppel prevents insurer from disowning its own medical underwriting report"
+    ],
+    "failed_arguments": [],
+    "key_evidence": [
+      "Insurer's pre-policy diagnostic report",
+      "Policy certificate showing underwritten approval"
+    ]
+  },
+  {
+    "case_id": "case_003",
+    "case_title": "Virendra Patel vs Star Allied General Insurance",
+    "court": "National Consumer Disputes Redressal Commission (NCDRC)",
+    "jurisdiction": "Delhi / National",
+    "case_number": "RP/18/2290",
+    "date": "2022-11-14",
+    "insurer": "Star Allied Insurance",
+    "insurance_type": "health",
+    "claim_amount": 450000,
+    "issue": "Repudiation of cardiovascular claim due to undisputed prior prescription records",
+    "denial_reason": "Deliberate concealment of hypertensive heart disease and diabetes",
+    "policy_clause": "Clause 4.1 & Section 17 Disclosure to Information Norm",
+    "facts": "Insured answered 'No' to questions on diabetes and hypertension in 2019. Insurer obtained pharmacy records and treating physician consultation papers from 2018 showing active Metformin & Telmisartan prescriptions.",
+    "policyholder_argument": "Blood sugar was mild and controlled; agent advised only major chronic illnesses required affirmative declaration.",
+    "insurer_argument": "Clear documentary evidence proves active prescription 8 months prior to proposal form. Contract of insurance is void ab initio for material suppression.",
+    "court_reasoning": "Documentary proof demonstrated regular medication and consultations prior to inception. Insurance requires utmost good faith. Failure to disclose ongoing medication is material non-disclosure justifying repudiation.",
+    "decision": "Revision petition allowed in favor of insurer; complaint dismissed.",
+    "outcome_category": "Insurer favorable",
+    "relief": "Nil — Repudiation upheld",
+    "case_status": "Revision Petition Allowed",
+    "source_url": "https://cms.nic.in/ncdrc/orders/RP2290_2018.pdf",
+    "source_citation": "NCDRC, Revision Petition No. 2290 of 2018 (2022)",
+    "successful_arguments": [
+      "Insurer produced undisputed pre-policy medical prescriptions bearing insured's name and dates"
+    ],
+    "failed_arguments": [
+      "Blaming insurance agent for misfilling the proposal form",
+      "Claiming condition was 'mild' so did not warrant disclosure"
+    ],
+    "key_evidence": [
+      "Dated doctor prescription pre-dating policy inception by 8 months",
+      "Pharmacy tax invoices"
+    ]
+  },
+  {
+    "case_id": "case_004",
+    "case_title": "Meenakshi Sundaram vs United India Insurance",
+    "court": "District Consumer Disputes Redressal Commission",
+    "jurisdiction": "Tamil Nadu",
+    "case_number": "CC/22/314",
+    "date": "2023-09-05",
+    "insurer": "United India Insurance",
+    "insurance_type": "health",
+    "claim_amount": 320000,
+    "issue": "Repudiation of bilateral knee replacement under 2-year waiting period clause",
+    "denial_reason": "Specific illness waiting period non-exhaustion",
+    "policy_clause": "Clause 4.2: 24-month waiting period for joint replacement surgery",
+    "facts": "Surgery took place at policy month 21. Insurer repudiated total bill of ₹3,20,000. Complainant incurred ₹80,000 on emergency pain management, imaging, and post-operative ICU care not exclusively surgical.",
+    "policyholder_argument": "Waiting period should apply only to prosthesis cost and surgeon fee, not emergency pain admission and systemic diagnostic evaluation.",
+    "insurer_argument": "Clause specifies all expenses connected with osteoarthritis joint replacement are barred until 24 months elapse.",
+    "court_reasoning": "While surgical prosthesis exclusion is valid and IRDAI-compliant, non-surgical diagnostics and general medical evaluation are severable.",
+    "decision": "Insurer directed to reimburse non-surgical diagnostic and physician charges of ₹68,000.",
+    "outcome_category": "Partial relief",
+    "relief": "₹68,000 partial reimbursement allowed",
+    "case_status": "Partially Allowed",
+    "source_url": "https://scdrc.tn.gov.in/orders/2023/314",
+    "source_citation": "District CDRC Chennai, CC/22/314 (2023)",
+    "successful_arguments": [
+      "Ancillary non-surgical diagnostics were distinct from surgical procedure costs"
+    ],
+    "failed_arguments": [
+      "Attempt to invalidate statutory 24-month joint replacement waiting clause"
+    ],
+    "key_evidence": [
+      "Itemized hospital bill clearly segregating implant from room/lab diagnostics"
+    ]
+  },
+  {
+    "case_id": "case_005",
+    "case_title": "Kishore Kumar vs Care Health Insurance Ltd.",
+    "court": "State Consumer Disputes Redressal Commission",
+    "jurisdiction": "Delhi",
+    "case_number": "A/21/55",
+    "date": "2022-07-19",
+    "insurer": "Care Health Insurance",
+    "insurance_type": "health",
+    "claim_amount": 290000,
+    "issue": "Repudiation of cataract surgery on ground of 2-year specific illness waiting period",
+    "denial_reason": "24-month waiting period clause 4.2",
+    "policy_clause": "Clause 4.2: Specific waiting period for cataract",
+    "facts": "Policy was renewed continuously for 2 years with portability from previous insurer. Current insurer counted waiting period only from date of porting, repudiating the claim.",
+    "policyholder_argument": "Under IRDAI Portability Circular 2011 & 2019, accrued waiting period credits must be transferred without reset.",
+    "insurer_argument": "Porting forms were submitted 5 days past renewal grace window.",
+    "court_reasoning": "Continuous coverage credit under IRDAI regulations protects continuity benefits. Arbitrary reset of waiting periods upon portability violates IRDAI Health Insurance Regulations.",
+    "decision": "Appeal allowed; insurer directed to settle full claim of ₹2,90,000 with 9% interest.",
+    "outcome_category": "Appeal allowed",
+    "relief": "₹2,90,000 + 9% interest + ₹20,000 costs",
+    "case_status": "Decided in favor of Policyholder",
+    "source_url": "https://delhistatecommission.nic.in/orders/A2155.pdf",
+    "source_citation": "State CDRC Delhi, Appeal No. 55/2021 (2022)",
+    "successful_arguments": [
+      "IRDAI Circular on portability mandates carrying forward waiting period continuity",
+      "Insurer cannot arbitrarily reset waiting period clocks"
+    ],
+    "failed_arguments": [],
+    "key_evidence": [
+      "Previous policy schedules proving continuous coverage for 3 preceding years",
+      "IRDAI portability confirmation certificate"
+    ]
+  },
+  {
+    "case_id": "case_006",
+    "case_title": "Harishankar Trivedi vs HDFC ERGO General Insurance",
+    "court": "Insurance Ombudsman",
+    "jurisdiction": "Ahmedabad",
+    "case_number": "IO/AHM/A/HI/0042/2022-23",
+    "date": "2023-02-18",
+    "insurer": "HDFC ERGO",
+    "insurance_type": "health",
+    "claim_amount": 175000,
+    "issue": "Disallowance of robotic laparoscopic hernia surgery under 'unproven/modern treatment' clause",
+    "denial_reason": "Clause 4.19: Unproven / Experimental Treatment",
+    "policy_clause": "Clause 4.19: Exclusion of robotic and advanced medical technologies",
+    "facts": "Insured underwent robotic ventral hernia repair. Insurer denied robotic console charges and 50% surgeon fee, invoking experimental treatment exclusion.",
+    "policyholder_argument": "IRDAI Guidelines on Standardization of Exclusions (2019) mandates robotic surgeries to be covered up to sub-limits, cannot be blanket excluded.",
+    "insurer_argument": "Policy was legacy wording issued in 2018 prior to mandatory phase-in.",
+    "court_reasoning": "IRDAI guidelines dated 27.09.2019 mandating coverage for 12 modern treatment methods became binding on all ongoing renewals from 01.10.2020. Insurer cannot rely on superseded legacy clauses.",
+    "decision": "Ombudsman ordered insurer to settle ₹1,55,000 after standard co-pay.",
+    "outcome_category": "Settlement",
+    "relief": "₹1,55,000 settlement directed",
+    "case_status": "Ombudsman Award Accepted",
+    "source_url": "https://cioins.co.in/awards/ahmedabad/2023/0042.pdf",
+    "source_citation": "Office of the Insurance Ombudsman Ahmedabad, Award 0042 (2023)",
+    "successful_arguments": [
+      "IRDAI Modern Treatments Circular supersedes old exclusionary clauses upon policy renewal"
+    ],
+    "failed_arguments": [
+      "Insurer's plea of legacy policy wording immunity"
+    ],
+    "key_evidence": [
+      "Discharge summary detailing clinical necessity of robotic assistance",
+      "IRDAI Master Circular on Standardization (2019)"
+    ]
+  },
+  {
+    "case_id": "case_007",
+    "case_title": "Ananya Mukherjee vs Bajaj Allianz General Insurance",
+    "court": "District Consumer Disputes Redressal Commission",
+    "jurisdiction": "West Bengal",
+    "case_number": "CC/20/88",
+    "date": "2022-04-10",
+    "insurer": "Bajaj Allianz",
+    "insurance_type": "health",
+    "claim_amount": 140000,
+    "issue": "Repudiation for 45-day delay in submitting post-hospitalization bills",
+    "denial_reason": "Late claim documentation submission exceeding 30-day window",
+    "policy_clause": "Condition 5: Claim documents must be submitted within 30 days of discharge",
+    "facts": "Insured was discharged following pancreatitis. Complainant was recovering alone and suffered post-discharge weakness, leading to filing at day 45 instead of day 30.",
+    "policyholder_argument": "IRDAI Circular Ref: IRDA/HLTH/MISC/CIR/216/09/2011 explicitly mandates insurers not to reject genuine claims merely on technical delays where condition was beyond control.",
+    "insurer_argument": "Condition precedent to liability was breached without prior intimation.",
+    "court_reasoning": "IRDAI circular unequivocally prohibits mechanical rejection on delay grounds unless insurer demonstrates prejudice or fraud. The medical emergency is genuine.",
+    "decision": "Repudiation set aside. Full reimbursement ordered with ₹10,000 compensation.",
+    "outcome_category": "Policyholder favorable",
+    "relief": "₹1,40,000 claim + ₹10,000 compensation",
+    "case_status": "Allowed in Full",
+    "source_url": "https://scdrc.wb.gov.in/orders/2022/88",
+    "source_citation": "District CDRC Kolkata, CC/20/88 (2022)",
+    "successful_arguments": [
+      "IRDAI Circular of 2011 prohibits mechanical rejection for delayed submission",
+      "Genuine medical convalescence justified the reasonable delay"
+    ],
+    "failed_arguments": [
+      "Strict enforcement of 30-day procedural cutoff to defeat substantive liability"
+    ],
+    "key_evidence": [
+      "Medical fitness certificate showing bed rest advised during delay period",
+      "Original bills and proof of dispatch"
+    ]
+  },
+  {
+    "case_id": "case_008",
+    "case_title": "Deepak Khurana vs Niva Bupa Health Insurance",
+    "court": "District Consumer Disputes Redressal Commission",
+    "jurisdiction": "Punjab",
+    "case_number": "CC/23/19",
+    "date": "2023-11-02",
+    "insurer": "Niva Bupa Health Insurance",
+    "insurance_type": "health",
+    "claim_amount": 260000,
+    "issue": "Proportionate deduction applied due to exceeding room rent limit",
+    "denial_reason": "Proportionate room rent sub-limit deduction",
+    "policy_clause": "Clause 2.1: Room rent capped at 1% of Sum Insured (₹3,000/day)",
+    "facts": "Sum Insured ₹3,00,000 with 1% room cap. Patient stayed in room costing ₹6,000/day. Insurer cut 50% across all medicine, doctor consultations, and OT charges, reimbursing only ₹1,20,000.",
+    "policyholder_argument": "Cost of medicines, implants, and statutory consumables has no relation to room rent and cannot be proportionately slashed.",
+    "insurer_argument": "Policy wording specifies proportionate deduction across all associated medical expenses when room cap is exceeded.",
+    "court_reasoning": "IRDAI guidelines state proportionate deductions can only apply to room-associated charges (nursing, room fees), not fixed priced items such as medicines, implants, and diagnostics.",
+    "decision": "Insurer ordered to refund ₹94,000 deducted from medicines and diagnostics.",
+    "outcome_category": "Policyholder favorable",
+    "relief": "₹94,000 refund + ₹10,000 mental agony compensation",
+    "case_status": "Allowed",
+    "source_url": "https://punjabconsumercommission.gov.in/orders/2023/19",
+    "source_citation": "District CDRC Ludhiana, CC/23/19 (2023)",
+    "successful_arguments": [
+      "Medicine and diagnostic MRP is invariable regardless of room category",
+      "Proportionate reduction must be restricted to room-elastic services"
+    ],
+    "failed_arguments": [],
+    "key_evidence": [
+      "Itemized medical bills distinguishing room charges from pharmacy MRP"
+    ]
+  },
+  {
+    "case_id": "case_009",
+    "case_title": "Alok Sengupta vs ABC Insurance Co.",
+    "court": "State Consumer Disputes Redressal Commission",
+    "jurisdiction": "Maharashtra",
+    "case_number": "A/22/411",
+    "date": "2023-05-18",
+    "insurer": "ABC Insurance",
+    "insurance_type": "health",
+    "claim_amount": 340000,
+    "issue": "Repudiation of diabetes & kidney treatment for alleged pre-existing condition",
+    "denial_reason": "Non-disclosure of pre-existing hypertension and renal condition",
+    "policy_clause": "Section 4.1 PED Exclusion",
+    "facts": "Policy issued in 2021. Hospitalization in 2023. Insurer argued hypertension was pre-existing because patient had mild borderline blood pressure documented in 2019 during a routine visa medical checkup.",
+    "policyholder_argument": "Borderline blood pressure reading on one occasion does not equate to chronic hypertension disease requiring declaration.",
+    "insurer_argument": "Any medical record showing abnormal vitals constitutes non-disclosure.",
+    "court_reasoning": "Isolated or borderline clinical readings without ongoing therapy or diagnosis do not constitute a pre-existing medical disease under established legal principles.",
+    "decision": "Order of District Commission confirmed; insurer must pay ₹3,40,000.",
+    "outcome_category": "Policyholder favorable",
+    "relief": "₹3,40,000 full claim settlement",
+    "case_status": "Appeal Dismissed against Insurer",
+    "source_url": "https://cms.nic.in/ncdrc/state/maharashtra/A22411.pdf",
+    "source_citation": "State CDRC Maharashtra, Appeal No. 411/2022 (2023)",
+    "successful_arguments": [
+      "Isolated borderline readings without therapeutic management do not constitute PED",
+      "Insurer's medical officer cannot retrospectively categorize normal variations as chronic illnesses"
+    ],
+    "failed_arguments": [],
+    "key_evidence": [
+      "Historical visa checkup report showing no prescribed medication"
+    ]
+  },
+  {
+    "case_id": "case_010",
+    "case_title": "Pooja Verma vs Star Health Insurance",
+    "court": "National Consumer Disputes Redressal Commission (NCDRC)",
+    "jurisdiction": "National",
+    "case_number": "RP/20/143",
+    "date": "2022-01-25",
+    "insurer": "Star Health Insurance",
+    "insurance_type": "health",
+    "claim_amount": 510000,
+    "issue": "Repudiation for alleged non-disclosure of thyroid condition",
+    "denial_reason": "Non-disclosure of pre-existing hypothyroidism",
+    "policy_clause": "Clause 4.1 Non-disclosure & Exclusion",
+    "facts": "Hospitalization for spinal disc prolapse. Insurer found mention in doctor's handwritten notes 'hypothyroid on Thyronorm 25mcg since 2018'. Policy inception 2020.",
+    "policyholder_argument": "Spinal disc disease has zero physiological nexus with hypothyroidism. Minor thyroid supplement had no bearing on the risk underwritten.",
+    "insurer_argument": "Contract is void for any non-disclosure irrespective of medical nexus.",
+    "court_reasoning": "Insurer failed to establish that undisclosed hypothyroidism had any nexus with spine degeneration. While materiality matters, repudiating an unrelated spinal emergency when insured has clean spinal history was harsh and unreasonable, warranting ex-gratia relief.",
+    "decision": "Insurer ordered to pay 75% of claim on non-standard basis.",
+    "outcome_category": "Partial relief",
+    "relief": "₹3,82,500 (75% claim settlement)",
+    "case_status": "Disposed with Partial Relief",
+    "source_url": "https://cms.nic.in/ncdrc/orders/RP143_2020.pdf",
+    "source_citation": "NCDRC, Revision Petition 143/2020 (2022)",
+    "successful_arguments": [
+      "Lack of medical nexus between disclosed history and hospitalization cause",
+      "Proportionality principle in insurance claim adjudication"
+    ],
+    "failed_arguments": [
+      "Insurer's plea for total forfeiture"
+    ],
+    "key_evidence": [
+      "Neurosurgeon's expert opinion ruling out endocrine nexus with disc herniation"
+    ]
+  },
+  {
+    "case_id": "case_011_insufficient",
+    "case_title": "Rajinder Singh vs National Insurance Co.",
+    "court": "District Consumer Disputes Redressal Commission",
+    "jurisdiction": "Punjab",
+    "case_number": "CC/23/991",
+    "date": "2023-12-01",
+    "insurer": "National Insurance",
+    "insurance_type": "health",
+    "claim_amount": 180000,
+    "issue": "Incomplete dispute record with missing policy terms and illegible discharge certificate",
+    "denial_reason": "General repudiation under Clause 7 without specific statutory subsection",
+    "policy_clause": "Clause 7 (unspecified subclause)",
+    "facts": "Record submitted by parties contained fragmented paragraphs without complete policy schedule, unclear hospitalization etiology, and conflicting dates.",
+    "policyholder_argument": "Generic assertion of unfair trade practice without specific timeline or policy terms.",
+    "insurer_argument": "Generic plea of breach of terms without producing proposal form or investigator report.",
+    "court_reasoning": "Neither party submitted sufficient primary documents. In the absence of the complete policy wording, proposal form, and verified clinical history, no conclusive determination on contractual breach can be reached.",
+    "decision": "Matter remanded back to parties to refile complete documentation within 60 days.",
+    "outcome_category": "Claim remanded",
+    "relief": "Remanded for full documentary record",
+    "case_status": "Remanded / Inconclusive",
+    "source_url": "https://cms.nic.in/punjab/orders/991.pdf",
+    "source_citation": "District CDRC, Case No. 991/2023 (Remand)",
+    "successful_arguments": [],
+    "failed_arguments": [],
+    "key_evidence": [],
+    "decision_summary": "Tribunal noted that absent complete policy clause terms and clear diagnosis timelines, neither claim admissibility nor lawful repudiation can be determined."
+  }
+]
