@@ -144,12 +144,31 @@ def call_llm_json(system: str, user: str) -> dict:
             {"role": "user", "content": user},
         ],
     )
-    text = resp.choices[0].message.content or ""
-    text = text.strip()
-    # Strip ```json ... ``` fences if the model disobeys instructions
-    if text.startswith("```"):
-        text = re.sub(r"^```[a-z]*\n?", "", text)
-        text = re.sub(r"\n?```$", "", text)
+    text = (resp.choices[0].message.content or "").strip()
+
+    # 1. Try parsing directly
+    try:
+        return json.loads(text)
+    except Exception:
+        pass
+
+    # 2. Extract JSON from inside markdown code block
+    fence_match = re.search(r"```(?:json)?\s*([\s\S]*?)\s*```", text, re.IGNORECASE)
+    if fence_match:
+        try:
+            return json.loads(fence_match.group(1).strip())
+        except Exception:
+            pass
+
+    # 3. Extract outermost curly braces
+    brace_match = re.search(r"(\{[\s\S]*\})", text)
+    if brace_match:
+        try:
+            return json.loads(brace_match.group(1).strip())
+        except Exception:
+            pass
+
+    # 4. Fallback to direct parse to raise standard JSONDecodeError
     return json.loads(text)
 
 
@@ -501,12 +520,13 @@ def generate_appeal(req: AppealRequest):
         return _appeal_template_fallback(req, precedents)
 
     # Build action plan and citations from the corpus data (grounded, not invented)
-    # Filter out any synthetic / illustrative placeholders so they never leak into user outputs
     raw_citations = []
     for p in precedents:
-        if p.source_citation:
+        if p.source_citation and not p.synthetic and not _is_synthetic_citation(p.source_citation):
             raw_citations.append(p.source_citation)
-        raw_citations.extend(p.regulation_sources or [])
+        for reg in (p.regulation_sources or []):
+            if not _is_synthetic_citation(reg):
+                raw_citations.append(reg)
 
     clean_citations = [c for c in raw_citations if not _is_synthetic_citation(c)]
 
@@ -533,7 +553,17 @@ def _is_synthetic_citation(text: Optional[str]) -> bool:
     if not text:
         return True
     lower = text.lower()
-    return "illustrative" in lower or "synthetic" in lower
+    synthetic_markers = [
+        "illustrative",
+        "synthetic",
+        "incomplete records",
+        "do not cite",
+        "mock",
+        "placeholder",
+        "sample",
+        "verify before",
+    ]
+    return any(marker in lower for marker in synthetic_markers)
 
 
 def _appeal_template_fallback(req: AppealRequest, precedents: list[CaseFingerprint]) -> dict:
@@ -549,7 +579,7 @@ def _appeal_template_fallback(req: AppealRequest, precedents: list[CaseFingerpri
     reason = fp.rejection_reason.value if fp.rejection_reason else "the stated reason"
     valid_precedent_refs = [
         p.source_citation for p in precedents
-        if p.source_citation and not _is_synthetic_citation(p.source_citation)
+        if p.source_citation and not p.synthetic and not _is_synthetic_citation(p.source_citation)
     ]
     precedent_refs = ", ".join(valid_precedent_refs) or "relevant IRDAI regulations and provisions"
 
@@ -586,9 +616,11 @@ Yours faithfully,
 
     raw_citations = []
     for p in precedents:
-        if p.source_citation:
+        if p.source_citation and not p.synthetic and not _is_synthetic_citation(p.source_citation):
             raw_citations.append(p.source_citation)
-        raw_citations.extend(p.regulation_sources or [])
+        for reg in (p.regulation_sources or []):
+            if not _is_synthetic_citation(reg):
+                raw_citations.append(reg)
 
     clean_citations = [c for c in raw_citations if not _is_synthetic_citation(c)]
 

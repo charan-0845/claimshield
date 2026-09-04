@@ -67,6 +67,7 @@ class CaseFingerprint(BaseModel):
     source_citation: Optional[str] = None  # e.g. "NCDRC, Consumer Case No. X, 2023"
     source_url: Optional[str] = None
     insufficient_information: bool = False  # True for the "Judge Q1" honesty case
+    synthetic: bool = False
 
 
 class ExtractionResult(BaseModel):

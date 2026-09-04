@@ -48,8 +48,8 @@ function setApiMode(mode: ApiMode) {
   }
 }
 
-// Keep extraction long enough for the LLM while keeping non-LLM calls fast.
-async function callBackend<T>(path: string, body: unknown, timeoutMs = 6000): Promise<T> {
+// Keep timeouts long enough for 70B LLM calls (extraction, intelligence, appeal)
+async function callBackend<T>(path: string, body: unknown, timeoutMs = 60000): Promise<T> {
   const baseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8000";
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
